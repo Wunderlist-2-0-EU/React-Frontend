@@ -1,8 +1,8 @@
 import React from "react";
 import SignupForm from "./components/SignupForm";
-import AddTodoForm from "./components/AddTodoForm";
-import Todo from "./components/Todo";
+
 import { Heading } from "@chakra-ui/core";
+import Container from "./components/Container";
 
 function App() {
   return (
@@ -11,8 +11,7 @@ function App() {
         Wunderlist-2.0
       </Heading>
       <SignupForm />
-      <AddTodoForm />
-      <Todo task="Buy milk, egg and flour" isChecked={true} />
+      <Container />
     </div>
   );
 }
