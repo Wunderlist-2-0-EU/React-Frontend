@@ -1,24 +1,20 @@
-- Ability to mark as complete
+import React from "react";
+import { Box, Checkbox, Stack } from "@chakra-ui/core";
 
-```jsx
-<Todo onClick={/* Show the TodoForm */}>
-  <Group>
-    <CompleteToggle onClick={/* Mark as complete/incomplete */}/>
-    <TodoText>This is the todo text<TodoText>
-  </Group>
+function Todo(props) {
+  const { task, isChecked } = props;
+  return (
+    <Box marginX="auto" maxWidth="500px">
+      <Stack spacing={10} isInline>
+        <Checkbox variantColor="cyan" isChecked={isChecked}>
+          {task}
+        </Checkbox>
+      </Stack>
+      {/* <input type="checkbox" defaultChecked={isChecked} />
+      <p>{task}</p> */}
+      <button>Edit</button>
+    </Box>
+  );
+}
 
-  <DeleteButton onClick={/* delete modal pops */} />
-  <DeleteModal>
-    <Text>Are you sure you want to delete</Text>
-    <Button>Yes, Delete</Button>
-    <Button>Cancel</Button>
-  </DeleteModal>
-</Todo>
-```
-
-- Ability to clear a completed todo
-
-```jsx
-  <Todo/>
-  <Button onClick={/* Clears the marked todo*/}>Clear Completed</Button>
-```
+export default Todo;
