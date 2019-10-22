@@ -89,7 +89,7 @@ export const EditTask = id => dispatch => {
     .put(`api/todos/${id}`)
     .then(res => {
       debugger;
-      dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
+      dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data.id });
     })
     .catch(err => {
       debugger;
