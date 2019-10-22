@@ -57,12 +57,11 @@ const Signup = ({ errors, touched, isSubmitting }) => {
       >
         Submit
       </Button>
-      {/*<Link to='/login'>*/}
-
-      <Text marginX="auto" maxWidth="350px">
-        Already have an account? Login here!
-      </Text>
-      {/* </Link> */}
+      <Link to="/login">
+        <Text marginX="auto" maxWidth="350px">
+          Already have an account? Login here!
+        </Text>
+      </Link>
     </Form>
   );
 };
@@ -86,8 +85,7 @@ const FormikSignup = withFormik({
       .required("Password is required")
   }),
   handleSubmit(values, { props, resetForm }) {
-    // debugger;
-    props.register(values);
+    props.register(values, props.history);
     resetForm();
   }
 })(Signup);

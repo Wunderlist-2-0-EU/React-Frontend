@@ -1,12 +1,6 @@
-// Onboarding process for a new general user
-
-// ```jsx
-// <SignupPage/> //for new users
-// <LoginPage/> //for returning users. It uses auth
-// ```
-
 import React from 'react';
 import { withFormik, Field, Form } from 'formik';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actionCreators';
 import * as yup from 'yup';
@@ -26,6 +20,9 @@ const Login = ({ errors, touched, isSubmitting }) => {
       <button disabled={isSubmitting} type='submit'>
         Login
       </button>
+      <Link to='/signup'>
+        <p>Don't have an account? Sign up here</p>
+      </Link>
     </Form>
   );
 };
