@@ -73,15 +73,12 @@ export const getSingleTask = id => dispatch => {
 
 export const addTask = task => dispatch => {
   dispatch({ type: types.ADD_TASK });
-  debugger;
   axiosWithAuth()
     .post('api/todos', task)
     .then(res => {
-      debugger;
       dispatch({ type: types.ADD_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
       dispatch({ type: types.ADD_TASK_FAILURE, payload: err.response.data });
     });
 };

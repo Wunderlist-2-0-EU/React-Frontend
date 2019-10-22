@@ -15,7 +15,6 @@ export function AddTodoForm({ addTask }) {
 
   const addTodo = event => {
     event.preventDefault();
-    debugger;
     addTask(formValues);
     setFormValues(initialFormValues);
   };
@@ -24,20 +23,22 @@ export function AddTodoForm({ addTask }) {
     <Stack isInline marginX='auto' maxWidth='500px'>
       <Input
         type='text'
-        placeholder='Add Task...'
+        title='Buy newspaper'
+        placeholder='Title'
+        value={formValues.title}
+        name='title'
+        onChange={handleChange}
+      />
+      <Input
+        type='text'
+        placeholder='Task'
         value={formValues.task}
         focusBorderColor='cyan.500'
         name='task'
         onChange={handleChange}
       />
       <Input
-        type='text'
-        title='Buy newspaper'
-        value={formValues.title}
-        name='title'
-        onChange={handleChange}
-      />
-      <Input
+        placeholder='User_ID'
         type='number'
         user_id='Buy newspaper'
         value={formValues.user_id}
@@ -45,6 +46,7 @@ export function AddTodoForm({ addTask }) {
         onChange={handleChange}
       />
       <Input
+        placeholder='Date'
         type='text'
         setDate='Buy newspaper'
         value={formValues.setDate}
