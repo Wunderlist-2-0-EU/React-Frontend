@@ -24,7 +24,7 @@ const Signup = ({ errors, touched }) => {
       <button type='submit'>Submit</button>
       <Link to='/'>
         <p>Already have an account? Login here!</p>
-      {/* </Link> */}
+      </Link>
     </Form>
   );
 };
