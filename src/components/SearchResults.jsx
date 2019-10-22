@@ -1,7 +1,6 @@
 import React from 'react';
-import { Stack, Text, Box } from "@chakra-ui/core";
+import { Stack } from "@chakra-ui/core";
 import { connect } from 'react-redux';
-import Todo from './Todo';
 
 
 function SearchResults(props) {
@@ -9,14 +8,14 @@ function SearchResults(props) {
         <Stack marginX="auto" maxWidth="500px">
             <h2>Searching for {props.searchTerm}</h2>
                 <ul>
-            {
-            props.searchResults.map(result => {
-            return (
-            <li>{result.task}</li>
-            );
-            })
-            }
-            </ul>
+                    {
+                        props.searchResults.map(result => {
+                        return (
+                        <li key={result.id} >{result.task}</li>
+                        );
+                        })
+                    }
+                 </ul>
         </Stack>
     );
 }

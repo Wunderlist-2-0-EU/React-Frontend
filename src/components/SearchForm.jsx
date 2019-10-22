@@ -35,7 +35,7 @@
 // ```
 
 import React, { useState } from 'react';
-import { Input, Button, Stack } from "@chakra-ui/core";
+import { Input, Stack } from "@chakra-ui/core";
 import { connect } from 'react-redux';
 import SearchResults from './SearchResults';
 
