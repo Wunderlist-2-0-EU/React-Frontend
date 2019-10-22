@@ -1,42 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { logout } from '../actionCreators';
-import Container from './Container';
-import EditTodoForm from './EditTodoForm';
-import LeftNavigation from './LeftNavigation';
-import SearchForm from './SearchForm';
+import Todo from './Todo';
 
 const TodoList = props => {
   return (
     <div>
-      {props.tasks.taskList.map(task => (
-        <div>{task.title}</div>
+      {props.tasks.taskList.map(todo => (
+        <Todo todo={todo} key={todo.id} />
       ))}
-      <div>
-        <SearchForm />
-      </div>
-      <div style={{ display: 'flex' }}>
-        <div>
-          <LeftNavigation />
-        </div>
-        <div>
-          <Container />
-        </div>
-        <div>
-          <EditTodoForm />
-        </div>
-      </div>
-      <div>
-        <Link to='/'>
-          <button onClick={() => logout()}>Logout</button>
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default connect(
-  state => state,
-  { logout }
-)(TodoList);
+export default connect(state => state)(TodoList);

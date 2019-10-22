@@ -10,7 +10,7 @@ export const register = (credentials, history) => dispatch => {
     .then(res => {
       localStorage.setItem('token', res.data.token);
       dispatch({ type: types.REGISTER_SUCCESS, payload: res.data });
-      history.push('/todolist');
+      history.push('/todoapp');
     })
     .catch(err => {
       dispatch({ type: types.REGISTER_FAILURE, payload: err.response.data });
@@ -24,7 +24,7 @@ export const login = (credentials, history) => dispatch => {
     .then(res => {
       localStorage.setItem('token', res.data.token);
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data });
-      history.push('/todolist');
+      history.push('/todoapp');
     })
     .catch(err => {
       dispatch({ type: types.LOGIN_SUCCESS, payload: err.response.data });

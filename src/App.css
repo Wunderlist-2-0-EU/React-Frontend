@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: #00b5d8;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.todo__search {
+  width: 50rem;
+  color: black;
+}

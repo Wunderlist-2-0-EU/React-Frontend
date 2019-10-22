@@ -104,28 +104,6 @@ const initialTaskList = {
       completed: null,
       created_at: '2019-07-21T14:30:32.381Z',
       updated_at: '2019-07-21T14:30:32.381Z'
-    },
-    {
-      id: 66,
-      user_id: null,
-      title: 'Lambda',
-      task: 'WEB20 Context Project',
-      notes: null,
-      setDate: 'Tuesday',
-      completed: null,
-      created_at: '2019-07-21T14:30:48.287Z',
-      updated_at: '2019-07-21T14:30:48.287Z'
-    },
-    {
-      id: 67,
-      user_id: 42,
-      title: 'Insomnia',
-      task: 'Trying Wunderlist End Points, Edit Todo',
-      notes: null,
-      setDate: 'Tuesday',
-      completed: null,
-      created_at: '2019-07-21T14:36:03.690Z',
-      updated_at: '2019-07-21T14:36:03.690Z'
     }
   ],
   error: '',

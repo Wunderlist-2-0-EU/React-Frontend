@@ -65,8 +65,9 @@ function SearchForm(props) {
 
   return (
     <>
-      <Stack isInline marginX='auto' maxWidth='500px'>
+      <Stack className='todo__search'>
         <Input
+          className='todo__search-input'
           type='text'
           placeholder='Search Here...'
           value={searchTerm}
@@ -74,7 +75,7 @@ function SearchForm(props) {
           onChange={handleChange}
         />
       </Stack>
-      <SearchResults searchTerm={searchTerm} searchResults={searchResults} />
+      {/*<SearchResults searchTerm={searchTerm} searchResults={searchResults} />*/}
     </>
   );
 }

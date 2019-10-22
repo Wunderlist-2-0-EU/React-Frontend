@@ -15,4 +15,4 @@ function SearchResults(props) {
   );
 }
 
-export default connect()(SearchResults);
+export default connect(state => state)(SearchResults);
