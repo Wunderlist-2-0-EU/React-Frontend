@@ -1,16 +1,12 @@
-// Onboarding process for a new general user
-
-// ```jsx
-// <SignupPage/> //for new users
-// <LoginPage/> //for returning users. It uses auth
-// ```
-
-import React from "react";
-import { withFormik, Field, Form } from "formik";
-import { Link } from "react-router-dom";
-import * as yup from "yup";
-import { register } from "../actionCreators";
+import React from 'react';
+import { withFormik, Field, Form } from 'formik';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Input, Button, Text, Heading, Box, Stack } from "@chakra-ui/core";
+import * as yup from 'yup';
+import { register } from '../actionCreators';
+
+
 
 const Signup = ({ errors, touched, isSubmitting }) => {
   return (
@@ -68,9 +64,10 @@ const Signup = ({ errors, touched, isSubmitting }) => {
       >
         Submit
       </Button>
-      {/*<Link to='/login'>
+      {/*<Link to='/login'>*/}
+
         <p>Already have an account? Login here!</p>
-  </Link>*/}
+      </Link>
     </Form>
   );
 };
@@ -93,10 +90,14 @@ const FormikSignup = withFormik({
       .min(8, "Must be minimum 8 characters")
       .required("Password is required")
   }),
-  handleSubmit(values, { setSubmitting, setErrors, resetForm }) {
+  handleSubmit(values, { props, resetForm }) {
     debugger;
-    register(values);
+    props.register(values);
+    resetForm();
   }
 })(Signup);
 
-export default FormikSignup;
+export default connect(
+  null,
+  { register }
+)(FormikSignup);
