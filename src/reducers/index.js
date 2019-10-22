@@ -58,7 +58,7 @@ export const loginReducer = (state = initialLoginState, action) => {
     case types.LOGIN_FAILURE:
       return {
         ...state,
-        error: action.payload.error.message,
+        error: action.payload.message,
         isFetching: false
       };
     default:

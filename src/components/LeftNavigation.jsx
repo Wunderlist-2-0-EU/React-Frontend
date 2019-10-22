@@ -1,17 +1,35 @@
-- Page to display existing todos
+// - Page to display existing todos
 
-```jsx
-<Page>
-  <SideNav>
-    <NavItem onClick={/* Go to /today */}>Today<NavItem>
-    <NavItem onClick={/* Go to /this-week */}>This week<NavItem>
-    <NavItem onClick={/* Go to /this-month */}>This month<NavItem>
-  </SideNav>
+// ```jsx
+// <Page>
+//   <SideNav>
+//     <NavItem onClick={/* Go to /today */}>Today<NavItem>
+//     <NavItem onClick={/* Go to /this-week */}>This week<NavItem>
+//     <NavItem onClick={/* Go to /this-month */}>This month<NavItem>
+//   </SideNav>
 
-  {/* Based on the url, show the corresponding content*/}
-  <MainDisplay>
-    <Text>This week</Text>
-    <TodoList />
-  <MainDisplay>
-</Page>
-```
+//   {/* Based on the url, show the corresponding content*/}
+//   <MainDisplay>
+//     <Text>This week</Text>
+//     <TodoList />
+//   <MainDisplay>
+// </Page>
+// ```
+
+import React from 'react';
+
+const LeftNavigation = () => {
+  return (
+    <div>
+      <ul>
+        <li>Overdue</li>
+        <li>Today</li>
+        <li>Month</li>
+        <li>All Tasks</li>
+        <li>Trash</li>
+      </ul>
+    </div>
+  );
+};
+
+export default LeftNavigation;
