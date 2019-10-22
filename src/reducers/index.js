@@ -18,7 +18,7 @@ export const registerReducer = (state = initialRegisterState, action) => {
     case types.REGISTER_SUCCESS:
       return {
         ...state,
-        user_id: action.payload.user_id,
+        user_id: action.payload.userID,
         message: action.payload.message,
         isFetching: false
       };
@@ -50,7 +50,7 @@ export const loginReducer = (state = initialLoginState, action) => {
       };
     case types.LOGIN_SUCCESS:
       return {
-        user_id: action.payload.user_id,
+        user_id: action.payload.userID,
         message: action.payload.message,
         isFetching: false,
         isLoggedIn: true
