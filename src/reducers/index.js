@@ -1,9 +1,9 @@
-import * as types from "../actionTypes";
+import * as types from '../actionTypes';
 
 const initialRegisterState = {
-  user_id: "",
-  message: "",
-  error: "",
+  user_id: '',
+  message: '',
+  error: '',
   isFetching: false
 };
 
@@ -13,7 +13,7 @@ export const registerReducer = (state = initialRegisterState, action) => {
       return {
         ...state,
         isFetching: true,
-        error: ""
+        error: ''
       };
     case types.REGISTER_SUCCESS:
       return {
@@ -34,9 +34,9 @@ export const registerReducer = (state = initialRegisterState, action) => {
 };
 
 const initialLoginState = {
-  user_id: "",
-  message: "",
-  error: "",
+  user_id: '',
+  message: '',
+  error: '',
   isFetching: false,
   isLoggedIn: false
 };
@@ -83,7 +83,7 @@ export const logoutReducer = (state = initialLogoutState, action) => {
 
 const initialTaskList = {
   taskList: [],
-  error: "",
+  error: '',
   isFetching: false
 };
 
@@ -107,7 +107,6 @@ export const taskListReducer = (state = initialTaskList, action) => {
         isFetching: false
       };
     case types.ADD_TASK:
-      debugger;
       return {
         ...state,
         isFetching: true

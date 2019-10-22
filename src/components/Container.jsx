@@ -1,7 +1,6 @@
 import React from "react";
 import AddTodoForm from "./AddTodoForm";
 import Todo from "./Todo";
-import DeleteTodo from "./DeleteTodo";
 import { Box, Flex, Button } from "@chakra-ui/core";
 import { SubtleButton1 } from "./CustomButtons";
 
