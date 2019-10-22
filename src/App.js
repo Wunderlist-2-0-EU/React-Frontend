@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 import { Heading } from "@chakra-ui/core";
 import Container from "./components/Container";
 import SignupForm from './components/SignupForm';
@@ -15,8 +15,8 @@ import LoginForm from './components/LoginForm';
       </Heading>
       <SignupForm />
       <Container />
-//      <Route exact path='/' component={SignupForm} />
-//       <Route path='/login' component={LoginForm} />
+{/*   <Route exact path='/' component={SignupForm} />
+      <Route path='/login' component={LoginForm} /> */}
 
     </div>
   );

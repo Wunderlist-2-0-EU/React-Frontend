@@ -67,7 +67,7 @@ const Signup = ({ errors, touched, isSubmitting }) => {
       {/*<Link to='/login'>*/}
 
         <p>Already have an account? Login here!</p>
-      </Link>
+      {/* </Link> */}
     </Form>
   );
 };
