@@ -1,12 +1,10 @@
-import React from 'react';
-import { withFormik, Field, Form } from 'formik';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import { withFormik, Field, Form } from "formik";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { Input, Button, Text, Heading, Box, Stack } from "@chakra-ui/core";
-import * as yup from 'yup';
-import { register } from '../actionCreators';
-
-
+import * as yup from "yup";
+import { register } from "../actionCreators";
 
 const Signup = ({ errors, touched, isSubmitting }) => {
   return (
@@ -18,45 +16,40 @@ const Signup = ({ errors, touched, isSubmitting }) => {
         <Box marginTop="30px">
           {errors.firstName && touched.firstName && <p>{errors.firstName}</p>}
           <Field
-            type="text"
             name="firstName"
-            placeholder="Name"
-            component={Input}
+            render={props => <Input placeholder="Name" {...props.field} />}
           />
         </Box>
 
         <Box>
           {errors.lastName && touched.lastName && <p>{errors.lastName}</p>}
           <Field
-            type="text"
             name="lastName"
-            placeholder="Surname"
-            component={Input}
+            render={props => <Input placeholder="Surname" {...props.field} />}
           />
         </Box>
         <Box>
           {errors.username && touched.username && <p>{errors.username}</p>}
           <Field
-            type="text"
             name="username"
-            placeholder="Username"
-            component={Input}
+            render={props => <Input placeholder="Username" {...props.field} />}
           />
         </Box>
 
         <Box>
           {errors.password && touched.password && <p>{errors.password}</p>}
           <Field
-            type="password"
             name="password"
-            placeholder="Password"
-            component={Input}
+            render={props => (
+              <Input placeholder="Password" type="password" {...props.field} />
+            )}
           />
         </Box>
       </Stack>
 
       <Button
-        isDisabled={isSubmitting}
+        isLoading={isSubmitting}
+        // isFullWidth
         type="submit"
         marginX="600px"
         marginTop="30px"
@@ -66,7 +59,9 @@ const Signup = ({ errors, touched, isSubmitting }) => {
       </Button>
       {/*<Link to='/login'>*/}
 
-        <p>Already have an account? Login here!</p>
+      <Text marginX="auto" maxWidth="350px">
+        Already have an account? Login here!
+      </Text>
       {/* </Link> */}
     </Form>
   );
@@ -91,7 +86,7 @@ const FormikSignup = withFormik({
       .required("Password is required")
   }),
   handleSubmit(values, { props, resetForm }) {
-    debugger;
+    // debugger;
     props.register(values);
     resetForm();
   }

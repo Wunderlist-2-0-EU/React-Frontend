@@ -1,9 +1,11 @@
 import React from "react";
 import { Checkbox, Stack, Flex, Button, Box } from "@chakra-ui/core";
 import { SubtleButton1, SubtleButton2 } from "./CustomButtons";
+import * as actionCreators from "../actionCreators";
+import { connect } from "react-redux";
 import DeleteTodo from "./DeleteTodo";
 
-function Todo(props) {
+export function Todo(props) {
   const { task, isChecked } = props;
   return (
     <Box marginX="auto" maxWidth="500px">
@@ -31,4 +33,7 @@ function Todo(props) {
   );
 }
 
-export default Todo;
+export default connect(
+  state => state,
+  actionCreators
+)(Todo);
