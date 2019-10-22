@@ -9,8 +9,8 @@ function App() {
   return (
     <div className='App'>
       <h2>Wunderlist-2.0</h2>
-      <Route exact path='/' component={SignupForm} />
-      <Route path='/login' component={LoginForm} />
+      <Route exact path='/' component={LoginForm} />
+      <Route path='/signup' component={SignupForm} />
       <PrivateRoute path='/todolist' component={TodoList} />
     </div>
   );

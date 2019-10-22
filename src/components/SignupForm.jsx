@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as yup from 'yup';
 import { register } from '../actionCreators';
 
-const Signup = ({ errors, touched, isSubmitting }) => {
+const Signup = ({ errors, touched }) => {
   return (
     <Form>
       <h2>Sign Up</h2>
@@ -22,7 +22,7 @@ const Signup = ({ errors, touched, isSubmitting }) => {
       <Field type='password' name='password' placeholder='Password' />
 
       <button type='submit'>Submit</button>
-      <Link to='/login'>
+      <Link to='/'>
         <p>Already have an account? Login here!</p>
       </Link>
     </Form>
@@ -48,7 +48,6 @@ const FormikSignup = withFormik({
       .required('Password is required')
   }),
   handleSubmit(values, { props, resetForm }) {
-    debugger;
     props.register(values, props.history);
     resetForm();
   }
