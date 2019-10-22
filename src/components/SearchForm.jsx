@@ -37,38 +37,80 @@
 import React, { useState } from 'react';
 import { Input, Button, Stack } from "@chakra-ui/core";
 import { connect } from 'react-redux';
+import SearchResults from './SearchResults';
 
+const todos = [
+    {
+    "id": 64,
+    "user_id": null,
+    "title": "Lambda",
+    "task": "Build Documentation",
+    "notes": null,
+    "setDate": "Tomorrow",
+    "completed": null,
+    "created_at": "2019-07-21T14:30:01.322Z",
+    "updated_at": "2019-07-21T14:30:01.322Z"
+    },
+    {
+    "id": 65,
+    "user_id": null,
+    "title": "Lambda",
+    "task": "WEBPT8 TL",
+    "notes": null,
+    "setDate": "Tonight",
+    "completed": null,
+    "created_at": "2019-07-21T14:30:32.381Z",
+    "updated_at": "2019-07-21T14:30:32.381Z"
+    },
+    {
+    "id": 66,
+    "user_id": null,
+    "title": "Lambda",
+    "task": "WEB20 Context Project",
+    "notes": null,
+    "setDate": "Tuesday",
+    "completed": null,
+    "created_at": "2019-07-21T14:30:48.287Z",
+    "updated_at": "2019-07-21T14:30:48.287Z"
+    },
+    {
+    "id": 67,
+    "user_id": 42,
+    "title": "Insomnia",
+    "task": "Trying Wunderlist End Points, Edit Todo",
+    "notes": null,
+    "setDate": "Tuesday",
+    "completed": null,
+    "created_at": "2019-07-21T14:36:03.690Z",
+    "updated_at": "2019-07-21T14:36:03.690Z"
+    }
+];
 
 function SearchForm(props) {
     const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState(todos);
 
     const handleChange = event => {
         setSearchTerm(event.target.value);
-    }
-
-    const handleSearch = event => {
-        debugger
+        setSearchResults(todos.filter(todo => todo.task.toLowerCase().includes(searchTerm.toLowerCase())));
     }
 
     return (
-      <Stack isInline marginX="auto" maxWidth="500px">
-        <Input
-            type="text"
-            placeholder="Search Here..."
-            value={searchTerm}
-            focusBorderColor="cyan.500"
-            onChange={handleChange}
+    <>
+        <Stack isInline marginX="auto" maxWidth="500px">
+            <Input
+                type="text"
+                placeholder="Search Here..."
+                value={searchTerm}
+                focusBorderColor="cyan.500"
+                onChange={handleChange}
+            />
+        </Stack>
+        <SearchResults 
+            searchTerm={searchTerm}
+            searchResults={searchResults} 
         />
-        <Button 
-            type="submit" 
-            paddingX="40px" 
-            variantColor="cyan" 
-            color="white"
-            onClick={handleSearch}
-        >
-          Search
-        </Button>
-      </Stack>
+    </>
     );
   }
   
