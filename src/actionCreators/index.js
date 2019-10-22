@@ -55,7 +55,7 @@ export const logout = () => {
 export const getTaskList = () => dispatch => {
   dispatch({ type: types.GET_ALL_TASKS });
   axiosWithAuth()
-    .get("https://wunderlist-2.herokuapp.com/api/todos")
+    .get('api/todos')
     .then(res => {
       debugger;
       dispatch({ type: types.GET_ALL_TASKS_SUCCESS, payload: res.data });
@@ -72,7 +72,7 @@ export const getTaskList = () => dispatch => {
 export const getSingleTask = id => dispatch => {
   dispatch({ type: types.GET_SINGLE_TASK });
   axiosWithAuth()
-    .get(`https://wunderlist-2.herokuapp.com/api/todos/${id}`)
+    .get(`api/todos/${id}`)
     .then(res => {
       debugger;
       dispatch({ type: types.GET_SINGLE_TASK_SUCCESS, payload: res.data });
@@ -90,7 +90,7 @@ export const addTask = task => dispatch => {
   dispatch({ type: types.ADD_TASK });
 
   axiosWithAuth()
-    .post("api/todos", task)
+    .post('api/todos', task)
     .then(res => {
       debugger;
       dispatch({ type: types.ADD_TASK_SUCCESS, payload: res.data });
@@ -104,7 +104,7 @@ export const addTask = task => dispatch => {
 export const EditTask = id => dispatch => {
   dispatch({ type: types.UPDATE_TASK });
   axiosWithAuth()
-    .put(`https://wunderlist-2.herokuapp.com/api/todos/${id}`)
+    .put(`api/todos/${id}`)
     .then(res => {
       debugger;
       dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
@@ -118,7 +118,7 @@ export const EditTask = id => dispatch => {
 export const deleteTask = id => dispatch => {
   dispatch({ type: types.DELETE_TASK });
   axiosWithAuth()
-    .delete(`https://wunderlist-2.herokuapp.com/api/todos/${id}`)
+    .delete(`api/todos/${id}`)
     .then(res => {
       debugger;
       dispatch({ type: types.DELETE_TASK_SUCCESS, payload: res.data });
@@ -133,7 +133,7 @@ export const deleteTask = id => dispatch => {
 export const getUser = id => dispatch => {
   dispatch({ type: types.GET_USER });
   axiosWithAuth()
-    .get(`https://wunderlist-2.herokuapp.com/api/users/${id}`)
+    .get(`api/users/${id}`)
     .then(res => {
       debugger;
       dispatch({ type: types.GET_USER_SUCCESS, payload: res.data });
@@ -147,7 +147,7 @@ export const getUser = id => dispatch => {
 export const editUser = id => dispatch => {
   dispatch({ type: types.UPDATE_USER });
   axiosWithAuth()
-    .put(`https://wunderlist-2.herokuapp.com/api/users/${id}`)
+    .put(`api/users/${id}`)
     .then(res => {
       debugger;
       dispatch({ type: types.UPDATE_USER_SUCCESS, payload: res.data });
@@ -161,7 +161,7 @@ export const editUser = id => dispatch => {
 export const deleteUser = id => dispatch => {
   dispatch({ type: types.DELETE_USER });
   axiosWithAuth()
-    .delete(`https://wunderlist-2.herokuapp.com/api/users/${id}`)
+    .delete(`api/users/${id}`)
     .then(res => {
       debugger;
       dispatch({ type: types.DELETE_USER_SUCCESS, payload: res.data });

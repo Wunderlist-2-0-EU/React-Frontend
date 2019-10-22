@@ -46,7 +46,6 @@ const Signup = ({ errors, touched, isSubmitting }) => {
           />
         </Box>
       </Stack>
-
       <Button
         isLoading={isSubmitting}
         // isFullWidth
