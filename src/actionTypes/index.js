@@ -1,44 +1,37 @@
+// Request Start Action Type
+export const REQUEST_START = 'REQUEST_START';
+
 // Register and Login Action Types
-export const REGISTER = 'REGISTER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
-export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const LOGOUT = 'LOGOUT';
 
 // Task Action Types
-export const GET_ALL_TASKS = 'GET_ALL_TASKS';
 export const GET_ALL_TASKS_SUCCESS = 'GET_ALL_TASKS_SUCCESS';
 export const GET_ALL_TASKS_FAILURE = 'GET_ALL_TASKS_FAILURE';
 
-export const GET_SINGLE_TASK = 'GET_SINGLE_TASK';
 export const GET_SINGLE_TASK_SUCCESS = 'GET_SINGLE_TASK_SUCCESS';
 export const GET_SINGLE_TASK_FAILURE = 'GET_SINGLE_TASK_FAILURE';
 
-export const ADD_TASK = 'ADD_TASK';
 export const ADD_TASK_SUCCESS = 'ADD_TASK_SUCCESS';
 export const ADD_TASK_FAILURE = 'ADD_TASK_FAILURE';
 
-export const UPDATE_TASK = 'UPDATE_TASK';
 export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS';
 export const UPDATE_TASK_FAILURE = 'UPDATE_TASK_FAILURE';
 
-export const DELETE_TASK = 'DELETE_TASK';
 export const DELETE_TASK_SUCCESS = 'DELETE_TASK_SUCCESS';
 export const DELETE_TASK_FAILURE = 'DELETE_TASK_FAILURE';
 
 // User Action Types
-export const GET_USER = 'GET_USER';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILURE = 'GET_USER_FAILURE';
 
-export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 
-export const DELETE_USER = 'DELETE_USER';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';

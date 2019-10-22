@@ -4,7 +4,7 @@ import * as types from '../actionTypes';
 
 // Register and Login Action Creators
 export const register = (credentials, history) => dispatch => {
-  dispatch({ type: types.REGISTER });
+  dispatch({ type: types.REQUEST_START });
   axios
     .post('https://wunderlist-2.herokuapp.com/api/auth/register', credentials)
     .then(res => {
@@ -18,7 +18,7 @@ export const register = (credentials, history) => dispatch => {
 };
 
 export const login = (credentials, history) => dispatch => {
-  dispatch({ type: types.LOGIN });
+  dispatch({ type: types.REQUEST_START });
   axios
     .post('https://wunderlist-2.herokuapp.com/api/auth/login', credentials)
     .then(res => {
@@ -38,7 +38,7 @@ export const logout = () => {
 
 // Tasks Action Creators
 export const getTaskList = () => dispatch => {
-  dispatch({ type: types.GET_ALL_TASKS });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .get('api/todos')
     .then(res => {
@@ -55,7 +55,7 @@ export const getTaskList = () => dispatch => {
 };
 
 export const getSingleTask = id => dispatch => {
-  dispatch({ type: types.GET_SINGLE_TASK });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .get(`api/todos/${id}`)
     .then(res => {
@@ -72,7 +72,7 @@ export const getSingleTask = id => dispatch => {
 };
 
 export const addTask = task => dispatch => {
-  dispatch({ type: types.ADD_TASK });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .post('api/todos', task)
     .then(res => {
@@ -84,7 +84,7 @@ export const addTask = task => dispatch => {
 };
 
 export const EditTask = id => dispatch => {
-  dispatch({ type: types.UPDATE_TASK });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .put(`api/todos/${id}`)
     .then(res => {
@@ -98,7 +98,7 @@ export const EditTask = id => dispatch => {
 };
 
 export const deleteTask = id => dispatch => {
-  dispatch({ type: types.DELETE_TASK });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .delete(`api/todos/${id}`)
     .then(res => {
@@ -113,7 +113,7 @@ export const deleteTask = id => dispatch => {
 
 // User Action Creators
 export const getUser = id => dispatch => {
-  dispatch({ type: types.GET_USER });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .get(`api/users/${id}`)
     .then(res => {
@@ -127,7 +127,7 @@ export const getUser = id => dispatch => {
 };
 
 export const editUser = id => dispatch => {
-  dispatch({ type: types.UPDATE_USER });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .put(`api/users/${id}`)
     .then(res => {
@@ -141,7 +141,7 @@ export const editUser = id => dispatch => {
 };
 
 export const deleteUser = id => dispatch => {
-  dispatch({ type: types.DELETE_USER });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .delete(`api/users/${id}`)
     .then(res => {
