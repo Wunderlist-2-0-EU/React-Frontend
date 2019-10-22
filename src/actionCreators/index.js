@@ -55,7 +55,7 @@ export const logout = () => {
 export const getTaskList = () => dispatch => {
   dispatch({ type: types.GET_ALL_TASKS });
   axiosWithAuth()
-    .get('api/todos')
+    .get("api/todos")
     .then(res => {
       debugger;
       dispatch({ type: types.GET_ALL_TASKS_SUCCESS, payload: res.data });
@@ -90,7 +90,7 @@ export const addTask = task => dispatch => {
   dispatch({ type: types.ADD_TASK });
 
   axiosWithAuth()
-    .post('api/todos', task)
+    .post("api/todos", task)
     .then(res => {
       debugger;
       dispatch({ type: types.ADD_TASK_SUCCESS, payload: res.data });
