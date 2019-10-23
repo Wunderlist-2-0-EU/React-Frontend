@@ -160,6 +160,16 @@ export const displayTasksReducer = (
       return {
         state: action.payload
       };
+    case types.DELETE_TASK_SUCCESS:
+        return {
+          ...state,
+          state: state.state.filter(task => task.id !== action.payload),
+        };
+    case types.ADD_TASK_SUCCESS:
+        return {
+          ...state,
+          state: state.state.concat(action.payload),
+        };
     default:
       return state;
   }

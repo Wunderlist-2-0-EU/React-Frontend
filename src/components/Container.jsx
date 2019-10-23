@@ -9,7 +9,7 @@ import Navigation from "./Navigation";
 import PrivateRoute from "./PrivateRoute";
 
 function Container(props) {
-  const [searchTerm, setSearchTerm] = React.useState();
+  const [searchTerm, setSearchTerm] = React.useState('');
   return (
     <Box>
 
