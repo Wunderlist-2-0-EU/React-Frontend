@@ -5,6 +5,7 @@ import Todo from "./Todo";
 import { Flex, Spinner, Text, Stack } from "@chakra-ui/core";
 import { SubtleButton1, SubtleButton2 } from "./CustomButtons";
 import DeleteTodo from "./DeleteTodo";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 const Loading = () => (
   <Flex align="center" justify="center" padding="40px">
@@ -14,6 +15,9 @@ const Loading = () => (
 );
 
 const TodoList = props => {
+  const history = useHistory();
+  const match = useRouteMatch();
+  // debugger;
   const { task, isChecked, onDelete, onEdit, onCheck } = props;
   const [isOpen, setIsOpen] = useState();
 
@@ -38,21 +42,24 @@ const TodoList = props => {
           onDelete={() => {
             props.deleteTask(todo.id);
           }}
+          onEdit={() => {
+            history.push(`${match.path}/edit/${todo.id}`);
+          }}
           onCheck={() => {
             const newTodo = {
               ...todo,
               completed: !todo.completed
             };
-            props.editTask(newTodo);
+            props.EditTask(newTodo);
           }}
         />
       ))}
 
       <Stack isInline spacing="50px" marginTop="30px">
         <SubtleButton1>Mark Completed</SubtleButton1>
-        <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2>
+        {/* <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2>
 
-        <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} />
+        <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} /> */}
       </Stack>
     </div>
   );

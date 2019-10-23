@@ -23,18 +23,21 @@ function Todo(props) {
             {task}
           </Checkbox>
         </Stack>
+        <Flex>
+          <Button
+            size="sm"
+            variant="outline"
+            variantColor="cyan"
+            marginLeft="105px"
+            onClick={() => onEdit()}
+          >
+            Edit
+          </Button>
+          <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2>
 
-        <Button
-          size="sm"
-          variant="outline"
-          variantColor="cyan"
-          marginLeft="105px"
-          onClick={onEdit}
-        >
-          Edit
-        </Button>
+          <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} />
+        </Flex>
       </Flex>
-     
     </Box>
   );
 }

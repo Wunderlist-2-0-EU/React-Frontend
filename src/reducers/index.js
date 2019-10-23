@@ -1,9 +1,9 @@
-import * as types from '../actionTypes';
+import * as types from "../actionTypes";
 
 const initialOnboardingState = {
-  user_id: '',
-  message: '',
-  error: '',
+  user_id: "",
+  message: "",
+  error: "",
   isFetching: false,
   isLoggedIn: false
 };
@@ -14,7 +14,7 @@ export const onBoardingReducer = (state = initialOnboardingState, action) => {
       return {
         ...state,
         isFetching: true,
-        error: ''
+        error: ""
       };
     case types.REGISTER_SUCCESS:
       return {
@@ -56,27 +56,27 @@ const initialTaskList = {
     {
       id: 64,
       user_id: null,
-      title: 'Lambda',
-      task: 'Build Documentation',
+      title: "Lambda",
+      task: "Build Documentation",
       notes: null,
-      setDate: 'Tomorrow',
+      setDate: "Tomorrow",
       completed: null,
-      created_at: '2019-07-21T14:30:01.322Z',
-      updated_at: '2019-07-21T14:30:01.322Z'
+      created_at: "2019-07-21T14:30:01.322Z",
+      updated_at: "2019-07-21T14:30:01.322Z"
     },
     {
       id: 65,
       user_id: null,
-      title: 'Lambda',
-      task: 'WEBPT8 TL',
+      title: "Lambda",
+      task: "WEBPT8 TL",
       notes: null,
-      setDate: 'Tonight',
+      setDate: "Tonight",
       completed: null,
-      created_at: '2019-07-21T14:30:32.381Z',
-      updated_at: '2019-07-21T14:30:32.381Z'
+      created_at: "2019-07-21T14:30:32.381Z",
+      updated_at: "2019-07-21T14:30:32.381Z"
     }
   ],
-  error: '',
+  error: "",
   isFetching: false
 };
 
@@ -114,7 +114,12 @@ export const taskListReducer = (state = initialTaskList, action) => {
     case types.UPDATE_TASK_SUCCESS:
       return {
         ...state,
-        taskList: state.taskList.find(task => task.id === action.payload),
+        taskList: state.taskList.map(task => {
+          if (task.id === action.payload.id) {
+            return action.payload;
+          }
+          return task;
+        }),
         isFetching: false
       };
     case types.UPDATE_TASK_FAILURE:
