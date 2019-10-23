@@ -12,6 +12,7 @@ const Loading = () => (
 );
 
 const TodoList = props => {
+  // debugger;
   useEffect(() => {
     props.getTaskList();
   }, []);
@@ -19,10 +20,9 @@ const TodoList = props => {
   if (props.tasks.isFetching) {
     return <Loading />;
   }
-
   return (
     <div>
-      {props.tasks.taskList.map(todo => (
+      {props.displayedTasks.state.map(todo => (
         <Todo
           key={todo.id}
           task={todo.task}
