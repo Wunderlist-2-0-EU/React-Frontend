@@ -25,3 +25,19 @@
   transition: ease-in 0.2s;
   color: white;
 }
+
+#edit-form-container {
+  padding-top: 100px;
+}
+
+.edit-form {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 1.2rem;
+}
+
+.edit-form button {
+  width: 10rem;
+}

@@ -15,7 +15,7 @@ import * as yup from 'yup';
 
 export function EditTodoForm(props) {
   return (
-    <Form>
+    <Form className='edit-form'>
       <Field
         name='task'
         render={({ field, form }) => (

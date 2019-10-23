@@ -32,6 +32,7 @@ const TodoList = props => {
         )
         .map(todo => (
           <Todo
+            className='todo-item'
             key={todo.id}
             task={todo.task}
             isChecked={todo.completed}
