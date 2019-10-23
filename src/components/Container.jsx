@@ -13,11 +13,7 @@ function Container(props) {
       <Navigation />
       <Flex bg='gray.50' minHeight='100vh'>
         <Box paddingTop='100px' as='aside' id='side-nav' flexBasis='20%'>
-          <Stack maxWidth='180px' mx='auto'>
-            <SideNavLink>Overdue</SideNavLink>
-            <SideNavLink>Today</SideNavLink>
-            <SideNavLink>Daily</SideNavLink>
-          </Stack>
+          <LeftNavigation />
         </Box>
         <Box
           py='100px'
