@@ -1,54 +1,35 @@
-// <<<<<<< liam-sutton
-// import React from 'react';
-// import { Checkbox, Stack, Flex, Button, Box } from '@chakra-ui/core';
-// import { SubtleButton1 } from './CustomButtons';
-// import DeleteTodo from './DeleteTodo';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-
-// function Todo({ todo, isChecked }) {
-// =======
-import React from "react";
-import { Checkbox, Stack, Flex, Button, Box } from "@chakra-ui/core";
-import { SubtleButton1, SubtleButton2 } from "./CustomButtons";
-import DeleteTodo from "./DeleteTodo";
+import { Checkbox, Stack, Flex, Button, Box } from '@chakra-ui/core';
+import { SubtleButton1, SubtleButton2 } from './CustomButtons';
+import DeleteTodo from './DeleteTodo';
 
 function Todo(props) {
   const { task, isChecked, onDelete, onEdit, onCheck } = props;
-  const [isOpen, setIsOpen] = React.useState();
+  const [isOpen, setIsOpen] = useState();
+
   const onClose = () => setIsOpen(false);
   const onOpen = () => setIsOpen(true);
-// >>>>>>> master
+
   return (
     <Box marginX='auto' maxWidth='500px'>
       <Flex marginTop='30px'>
         <Stack spacing={10} isInline>
-{/* <!-- <<<<<<< liam-sutton
-          <Checkbox variantColor='cyan' isChecked={isChecked}>
-            <p>{todo.task}</p>
-======= --> */}
           <Checkbox
             onChange={() => onCheck(!isChecked)}
-            variantColor="cyan"
+            variantColor='cyan'
             isChecked={isChecked}
           >
             {task}
-{/* <!-- >>>>>>> master --> */}
           </Checkbox>
         </Stack>
 
         <Button
-// <!-- <<<<<<< liam-sutton
-//           size='sm'
-//           variant='outline'
-//           variantColor='cyan'
-//           marginLeft='105px'
-// ======= -->
-          size="sm"
-          variant="outline"
-          variantColor="cyan"
-          marginLeft="105px"
+          size='sm'
+          variant='outline'
+          variantColor='cyan'
+          marginLeft='105px'
           onClick={onEdit}
-// <!-- >>>>>>> master -->
         >
           Edit
         </Button>
