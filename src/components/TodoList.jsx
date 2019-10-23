@@ -33,9 +33,12 @@ const TodoList = props => {
     return <Loading />;
   }
   return (
+    <>
     <div>
+      <h2>Todos</h2>
       {props.displayedTasks.state
       .filter(task => props.searchTerm ? task.task.includes(props.searchTerm) : true)
+      .filter(task => !task.completed)
       .map(todo => (
         <Todo
           key={todo.id}
@@ -57,6 +60,33 @@ const TodoList = props => {
         />
       ))}
     </div>
+    <div>
+      <h2>Completed</h2>
+      {props.displayedTasks.state
+      .filter(task => props.searchTerm ? task.task.includes(props.searchTerm) : true)
+      .filter(task => task.completed)
+      .map(todo => (
+        <Todo
+          key={todo.id}
+          task={todo.task}
+          isChecked={todo.completed}
+          onDelete={() => {
+            props.deleteTask(todo.id);
+          }}
+          onEdit={() => {
+            history.push(`${match.path}/edit/${todo.id}`);
+          }}
+          onCheck={() => {
+            const newTodo = {
+              ...todo,
+              completed: !todo.completed
+            };
+            props.EditTask(newTodo);
+          }}
+        />
+      ))}
+    </div>
+    </>
   );
 };
 

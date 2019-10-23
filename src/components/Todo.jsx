@@ -24,7 +24,7 @@ function Todo(props) {
           </Checkbox>
         </Stack>
         <Flex>
-          <Button
+          {!isChecked && <Button
             size="sm"
             variant="outline"
             variantColor="cyan"
@@ -32,9 +32,8 @@ function Todo(props) {
             onClick={() => onEdit()}
           >
             Edit
-          </Button>
+          </Button>}
           <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2>
-
           <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} />
         </Flex>
       </Flex>
