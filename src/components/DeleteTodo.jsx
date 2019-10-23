@@ -10,18 +10,20 @@ import {
 } from "@chakra-ui/core";
 import { SubtleButton2 } from "./CustomButtons";
 
-function DeleteTodo() {
-  const [isOpen, setIsOpen] = React.useState();
-  const onClose = () => setIsOpen(false);
+function DeleteTodo(props) {
+  const { onConfirm, onClose, isOpen } = props;
   const cancelRef = React.useRef();
+
+  const handleConfirm = () => {
+    onConfirm();
+    onClose();
+  };
 
   return (
     <>
       {/* <Button variantColor="red" onClick={() => setIsOpen(true)}>
         Delete
       </Button> */}
-
-      <SubtleButton2 onClick={() => setIsOpen(true)}>Delete</SubtleButton2>
 
       <AlertDialog
         isOpen={isOpen}
@@ -45,7 +47,7 @@ function DeleteTodo() {
             {/* <Button variantColor="red" onClick={onClose} ml={3}>
               Delete
             </Button> */}
-            <SubtleButton2 onClick={onClose} ml={3}>
+            <SubtleButton2 onClick={handleConfirm} ml={3}>
               Delete
             </SubtleButton2>
           </AlertDialogFooter>

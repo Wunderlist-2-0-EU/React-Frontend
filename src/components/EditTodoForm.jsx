@@ -92,10 +92,8 @@
 // </TodoForm>
 // ```
 
-import React from 'react';
+import React from "react";
 
-export default function () {
-    return (
-        <div>Hello World from EditToDoForm!</div>
-    )
+export default function EditToDoForm() {
+  return <div>Hello World from EditToDoForm!</div>;
 }

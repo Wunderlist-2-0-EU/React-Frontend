@@ -126,7 +126,7 @@ export const taskListReducer = (state = initialTaskList, action) => {
     case types.UPDATE_TASK:
       return {
         ...state,
-        isFetching: true
+        // isFetching: true
       };
     case types.UPDATE_TASK_SUCCESS:
       return {
@@ -148,7 +148,7 @@ export const taskListReducer = (state = initialTaskList, action) => {
     case types.DELETE_TASK:
       return {
         ...state,
-        isFetching: true
+        // isFetching: true
       };
     case types.DELETE_TASK_SUCCESS:
       return {

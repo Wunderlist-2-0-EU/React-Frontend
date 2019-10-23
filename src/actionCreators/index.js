@@ -1,16 +1,18 @@
-import axiosWithAuth from '../utils/axiosWithAuth';
-import axios from 'axios';
-import * as types from '../actionTypes';
+import axiosWithAuth from "../utils/axiosWithAuth";
+import axios from "axios";
+import * as types from "../actionTypes";
 
 // Register and Login Action Creators
 export const register = (credentials, history) => dispatch => {
   dispatch({ type: types.REGISTER });
   axios
-    .post('https://wunderlist-2.herokuapp.com/api/auth/register', credentials)
+    .post("https://wunderlist-2.herokuapp.com/api/auth/register", credentials)
     .then(res => {
-      localStorage.setItem('token', res.data.token);
+      // we need to also store the userID in localStorage because addTodo requires a user_id)
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userID", res.data.userID);
       dispatch({ type: types.REGISTER_SUCCESS, payload: res.data });
-      history.push('/todolist');
+      history.push("/todolist");
     })
     .catch(err => {
       dispatch({ type: types.REGISTER_FAILURE, payload: err.response.data });
@@ -20,11 +22,13 @@ export const register = (credentials, history) => dispatch => {
 export const login = (credentials, history) => dispatch => {
   dispatch({ type: types.LOGIN });
   axios
-    .post('https://wunderlist-2.herokuapp.com/api/auth/login', credentials)
+    .post("https://wunderlist-2.herokuapp.com/api/auth/login", credentials)
     .then(res => {
-      localStorage.setItem('token', res.data.token);
+      // we need to also store the userID in localStorage because addTodo requires a user_id)
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userID", res.data.userID);
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data });
-      history.push('/todolist');
+      history.push("/todolist");
     })
     .catch(err => {
       dispatch({ type: types.LOGIN_SUCCESS, payload: err.response.data });
@@ -40,13 +44,13 @@ export const logout = () => {
 export const getTaskList = () => dispatch => {
   dispatch({ type: types.GET_ALL_TASKS });
   axiosWithAuth()
-    .get("api/todos")
+    .get("https://wunderlist-2.herokuapp.com/api/todos")
     .then(res => {
-      debugger;
+      // debugger;
       dispatch({ type: types.GET_ALL_TASKS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
+      // debugger;
       dispatch({
         type: types.GET_ALL_TASKS_FAILURE,
         payload: err.response.data
@@ -59,11 +63,11 @@ export const getSingleTask = id => dispatch => {
   axiosWithAuth()
     .get(`api/todos/${id}`)
     .then(res => {
-      debugger;
+      // debugger;
       dispatch({ type: types.GET_SINGLE_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
+      // debugger;
       dispatch({
         type: types.GET_SINGLE_TASK_FAILURE,
         payload: err.response.data
@@ -74,41 +78,41 @@ export const getSingleTask = id => dispatch => {
 export const addTask = task => dispatch => {
   dispatch({ type: types.ADD_TASK });
   axiosWithAuth()
-    .post("api/todos", task)
+    .post("https://wunderlist-2.herokuapp.com/api/todos", task)
     .then(res => {
-      debugger;
+      // debugger;
       dispatch({ type: types.ADD_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
+      // debugger;
       dispatch({ type: types.ADD_TASK_FAILURE, payload: err.response.data });
     });
 };
 
-export const EditTask = id => dispatch => {
-  dispatch({ type: types.UPDATE_TASK });
+export const editTask = task => dispatch => {
+  // dispatch({ type: types.UPDATE_TASK });
   axiosWithAuth()
-    .put(`api/todos/${id}`)
+    .put(`https://wunderlist-2.herokuapp.com/api/todos/${task.id}`, task)
     .then(res => {
-      debugger;
+      // debugger;
       dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
+      // debugger;
       dispatch({ type: types.UPDATE_TASK_FAILURE, payload: err.response.data });
     });
 };
 
 export const deleteTask = id => dispatch => {
-  dispatch({ type: types.DELETE_TASK });
+  // dispatch({ type: types.DELETE_TASK });
   axiosWithAuth()
-    .delete(`api/todos/${id}`)
+    .delete(`https://wunderlist-2.herokuapp.com/api/todos/${id}`)
     .then(res => {
-      debugger;
-      dispatch({ type: types.DELETE_TASK_SUCCESS, payload: res.data });
+      // debugger;
+      dispatch({ type: types.DELETE_TASK_SUCCESS, payload: id });
     })
     .catch(err => {
-      debugger;
+      // debugger;
       dispatch({ type: types.DELETE_TASK_FAILURE, payload: err.response.data });
     });
 };
