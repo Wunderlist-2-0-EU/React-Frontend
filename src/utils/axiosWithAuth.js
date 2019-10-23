@@ -1,16 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
 const axiosWithAuth = () => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   return axios.create({
-// <<<<<<< liam-sutton
-    baseURL: 'https://wunderlist-2.herokuapp.com/',
-// =======
-//     baseUrl: 'https://wunderlist-2.herokuapp.com/',
-// >>>>>>> master
+    baseURL: "https://wunderlist-2.herokuapp.com/",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: token
     }
   });
