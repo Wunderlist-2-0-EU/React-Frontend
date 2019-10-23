@@ -4,7 +4,7 @@ import * as types from "../actionTypes";
 
 // Register and Login Action Creators
 export const register = (credentials, history) => dispatch => {
-  dispatch({ type: types.REGISTER });
+  dispatch({ type: types.REQUEST_START });
   axios
     .post("https://wunderlist-2.herokuapp.com/api/auth/register", credentials)
     .then(res => {
@@ -12,7 +12,11 @@ export const register = (credentials, history) => dispatch => {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userID", res.data.userID);
       dispatch({ type: types.REGISTER_SUCCESS, payload: res.data });
-      history.push("/todolist");
+// <<<<<<< liam-sutton
+      history.push('/todoapp');
+// =======
+//       history.push("/todolist");
+// >>>>>>> master
     })
     .catch(err => {
       dispatch({ type: types.REGISTER_FAILURE, payload: err.response.data });
@@ -20,7 +24,7 @@ export const register = (credentials, history) => dispatch => {
 };
 
 export const login = (credentials, history) => dispatch => {
-  dispatch({ type: types.LOGIN });
+  dispatch({ type: types.REQUEST_START });
   axios
     .post("https://wunderlist-2.herokuapp.com/api/auth/login", credentials)
     .then(res => {
@@ -28,7 +32,11 @@ export const login = (credentials, history) => dispatch => {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userID", res.data.userID);
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data });
-      history.push("/todolist");
+// <<<<<<< liam-sutton
+      history.push('/todoapp');
+// =======
+//       history.push("/todolist");
+// >>>>>>> master
     })
     .catch(err => {
       dispatch({ type: types.LOGIN_SUCCESS, payload: err.response.data });
@@ -42,9 +50,13 @@ export const logout = () => {
 
 // Tasks Action Creators
 export const getTaskList = () => dispatch => {
-  dispatch({ type: types.GET_ALL_TASKS });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
-    .get("https://wunderlist-2.herokuapp.com/api/todos")
+// <<<<<<< liam-sutton
+    .get('api/todos')
+// =======
+//     .get("https://wunderlist-2.herokuapp.com/api/todos")
+// >>>>>>> master
     .then(res => {
       // debugger;
       dispatch({ type: types.GET_ALL_TASKS_SUCCESS, payload: res.data });
@@ -59,7 +71,7 @@ export const getTaskList = () => dispatch => {
 };
 
 export const getSingleTask = id => dispatch => {
-  dispatch({ type: types.GET_SINGLE_TASK });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .get(`api/todos/${id}`)
     .then(res => {
@@ -76,26 +88,44 @@ export const getSingleTask = id => dispatch => {
 };
 
 export const addTask = task => dispatch => {
-  dispatch({ type: types.ADD_TASK });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
-    .post("https://wunderlist-2.herokuapp.com/api/todos", task)
+// <<<<<<< liam-sutton
+    .post('api/todos', task)
     .then(res => {
-      // debugger;
       dispatch({ type: types.ADD_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      // debugger;
+// =======
+//     .post("https://wunderlist-2.herokuapp.com/api/todos", task)
+//     .then(res => {
+//       // debugger;
+//       dispatch({ type: types.ADD_TASK_SUCCESS, payload: res.data });
+//     })
+//     .catch(err => {
+//       // debugger;
+// >>>>>>> master
       dispatch({ type: types.ADD_TASK_FAILURE, payload: err.response.data });
     });
 };
 
-export const editTask = task => dispatch => {
-  // dispatch({ type: types.UPDATE_TASK });
+// <<<<<<< liam-sutton
+export const EditTask = id => dispatch => {
+  dispatch({ type: types.REQUEST_START });
+// =======
+// export const editTask = task => dispatch => {
+//   // dispatch({ type: types.UPDATE_TASK });
+// >>>>>>> master
   axiosWithAuth()
     .put(`https://wunderlist-2.herokuapp.com/api/todos/${task.id}`, task)
     .then(res => {
-      // debugger;
-      dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
+// <<<<<<< liam-sutton
+      debugger;
+      dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data.id });
+// =======
+//       // debugger;
+//       dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
+// >>>>>>> master
     })
     .catch(err => {
       // debugger;
@@ -104,7 +134,11 @@ export const editTask = task => dispatch => {
 };
 
 export const deleteTask = id => dispatch => {
-  // dispatch({ type: types.DELETE_TASK });
+// <<<<<<< liam-sutton
+  dispatch({ type: types.REQUEST_START });
+// =======
+//   // dispatch({ type: types.DELETE_TASK });
+// >>>>>>> master
   axiosWithAuth()
     .delete(`https://wunderlist-2.herokuapp.com/api/todos/${id}`)
     .then(res => {
@@ -119,7 +153,7 @@ export const deleteTask = id => dispatch => {
 
 // User Action Creators
 export const getUser = id => dispatch => {
-  dispatch({ type: types.GET_USER });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .get(`api/users/${id}`)
     .then(res => {
@@ -133,7 +167,7 @@ export const getUser = id => dispatch => {
 };
 
 export const editUser = id => dispatch => {
-  dispatch({ type: types.UPDATE_USER });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .put(`api/users/${id}`)
     .then(res => {
@@ -147,7 +181,7 @@ export const editUser = id => dispatch => {
 };
 
 export const deleteUser = id => dispatch => {
-  dispatch({ type: types.DELETE_USER });
+  dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
     .delete(`api/users/${id}`)
     .then(res => {

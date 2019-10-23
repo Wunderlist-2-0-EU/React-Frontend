@@ -1,15 +1,16 @@
 import * as types from '../actionTypes';
 
-const initialRegisterState = {
+const initialOnboardingState = {
   user_id: '',
   message: '',
   error: '',
-  isFetching: false
+  isFetching: false,
+  isLoggedIn: false
 };
 
-export const registerReducer = (state = initialRegisterState, action) => {
+export const onBoardingReducer = (state = initialOnboardingState, action) => {
   switch (action.type) {
-    case types.REGISTER:
+    case types.REQUEST_START:
       return {
         ...state,
         isFetching: true,
@@ -28,26 +29,6 @@ export const registerReducer = (state = initialRegisterState, action) => {
         error: action.payload,
         isFetching: false
       };
-    default:
-      return state;
-  }
-};
-
-const initialLoginState = {
-  user_id: '',
-  message: '',
-  error: '',
-  isFetching: false,
-  isLoggedIn: false
-};
-
-export const loginReducer = (state = initialLoginState, action) => {
-  switch (action.type) {
-    case types.LOGIN:
-      return {
-        ...state,
-        isFetching: true
-      };
     case types.LOGIN_SUCCESS:
       return {
         user_id: action.payload.userID,
@@ -61,17 +42,6 @@ export const loginReducer = (state = initialLoginState, action) => {
         error: action.payload.message,
         isFetching: false
       };
-    default:
-      return state;
-  }
-};
-
-const initialLogoutState = {
-  isLoggedIn: true
-};
-
-export const logoutReducer = (state = initialLogoutState, action) => {
-  switch (action.type) {
     case types.LOGOUT:
       return {
         isLoggedIn: false
@@ -82,14 +52,37 @@ export const logoutReducer = (state = initialLogoutState, action) => {
 };
 
 const initialTaskList = {
-  taskList: [],
+  taskList: [
+    {
+      id: 64,
+      user_id: null,
+      title: 'Lambda',
+      task: 'Build Documentation',
+      notes: null,
+      setDate: 'Tomorrow',
+      completed: null,
+      created_at: '2019-07-21T14:30:01.322Z',
+      updated_at: '2019-07-21T14:30:01.322Z'
+    },
+    {
+      id: 65,
+      user_id: null,
+      title: 'Lambda',
+      task: 'WEBPT8 TL',
+      notes: null,
+      setDate: 'Tonight',
+      completed: null,
+      created_at: '2019-07-21T14:30:32.381Z',
+      updated_at: '2019-07-21T14:30:32.381Z'
+    }
+  ],
   error: '',
   isFetching: false
 };
 
 export const taskListReducer = (state = initialTaskList, action) => {
   switch (action.type) {
-    case types.GET_ALL_TASKS:
+    case types.REQUEST_START:
       return {
         ...state,
         isFetching: true
@@ -106,11 +99,6 @@ export const taskListReducer = (state = initialTaskList, action) => {
         error: action.payload,
         isFetching: false
       };
-    case types.ADD_TASK:
-      return {
-        ...state,
-        isFetching: true
-      };
     case types.ADD_TASK_SUCCESS:
       return {
         ...state,
@@ -123,20 +111,18 @@ export const taskListReducer = (state = initialTaskList, action) => {
         error: action.payload,
         isFetching: false
       };
-    case types.UPDATE_TASK:
-      return {
-        ...state,
-        // isFetching: true
-      };
+// <<<<<<< liam-sutton
+// =======
+//     case types.UPDATE_TASK:
+//       return {
+//         ...state,
+//         // isFetching: true
+//       };
+// >>>>>>> master
     case types.UPDATE_TASK_SUCCESS:
       return {
         ...state,
-        taskList: state.taskList.map(task => {
-          if (task.id === action.payload.id) {
-            return action.payload;
-          }
-          return task;
-        }),
+        taskList: state.taskList.find(task => task.id === action.payload),
         isFetching: false
       };
     case types.UPDATE_TASK_FAILURE:
@@ -145,11 +131,14 @@ export const taskListReducer = (state = initialTaskList, action) => {
         error: action.payload,
         isFetching: false
       };
-    case types.DELETE_TASK:
-      return {
-        ...state,
-        // isFetching: true
-      };
+// <<<<<<< liam-sutton
+// =======
+//     case types.DELETE_TASK:
+//       return {
+//         ...state,
+//         // isFetching: true
+//       };
+// >>>>>>> master
     case types.DELETE_TASK_SUCCESS:
       return {
         ...state,
