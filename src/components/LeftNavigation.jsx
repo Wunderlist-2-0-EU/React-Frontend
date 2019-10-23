@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useRouteMatch, Link as RouterLink } from 'react-router-dom';
-import { filterByDate } from '../actionCreators';
+import { filterByDate, resetDisplayedTasks } from '../actionCreators';
 import { Text, Stack } from '@chakra-ui/core';
 
 export const SideNavLink = props => {
@@ -9,12 +9,11 @@ export const SideNavLink = props => {
   return <Text {...props} />;
 };
 
-// <SideNavLink to="/overdue"> Overdue </SideNavLink>
-
 const LeftNavigation = props => {
+  debugger
   return (
     <Stack maxWidth='180px' mx='auto'>
-      <SideNavLink>Overdue</SideNavLink>
+      <SideNavLink onClick={() => props.resetDisplayedTasks(props.tasks.taskList)}>All Tasks</SideNavLink>
       <SideNavLink onClick={() => props.filterByDate(Date.now())}>
         Today
       </SideNavLink>
@@ -25,5 +24,5 @@ const LeftNavigation = props => {
 
 export default connect(
   state => state,
-  { filterByDate }
+  { filterByDate, resetDisplayedTasks }
 )(LeftNavigation);

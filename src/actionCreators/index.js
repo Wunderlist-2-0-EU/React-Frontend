@@ -125,8 +125,8 @@ export const filterBySearchTerm = searchTerm => dispatch => {
   dispatch({ type: types.FILTER_BY_SEARCH_TERM, payload: searchTerm });
 };
 
-export const resetDisplayedTasks = () => dispatch => {
-  dispatch({ type: types.RESET_DISPLAYED_TASKS });
+export const resetDisplayedTasks = tasks => dispatch => {
+  dispatch({ type: types.RESET_DISPLAYED_TASKS, payload: tasks });
 };
 
 // User Action Creators
