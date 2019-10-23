@@ -1,13 +1,13 @@
 // <<<<<<< liam-sutton
 // import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import { Box, Flex, Button } from '@chakra-ui/core';
 // import { SubtleButton1 } from './CustomButtons';
 // import AddTodoForm from './AddTodoForm';
 // import TodoList from './TodoList';
 // import EditTodoForm from './EditTodoForm';
 // import LeftNavigation from './LeftNavigation';
-// import Navigation from './Navigation';
+import Navigation from './Navigation';
 
 // function Container(props) {
 //   return (
@@ -54,7 +54,8 @@ import HeaderNav from "./HeaderNav";
 function Container(props) {
   return (
     <Box>
-      <HeaderNav />
+      {/* <HeaderNav /> */}
+      <Navigation />
       <Flex bg="gray.50" minHeight="100vh">
         <Box paddingTop="100px" as="aside" id="side-nav" flexBasis="20%">
           <Stack maxWidth="180px" mx="auto">
