@@ -63,7 +63,7 @@ export function EditTodoForm(props) {
         )}
       />
       <Field
-        name="repeat"
+        name="notes"
         render={({ field, form }) => (
           <FormControl
             isInvalid={form.errors[field.name] && form.touched[field.name]}
