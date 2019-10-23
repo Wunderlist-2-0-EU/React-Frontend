@@ -5,12 +5,8 @@ import * as actionCreators from '../actionCreators';
 import SearchResults from './SearchResults';
 
 function SearchForm(props) {
-  const [searchTerm, setSearchTerm] = useState('');
-
   const handleChange = event => {
-    setSearchTerm(event.target.value);
-
-    props.filterBySearchTerm(searchTerm);
+    props.setSearchTerm(event.target.value);
   };
 
   return (
@@ -20,7 +16,7 @@ function SearchForm(props) {
           className='todo__search-input'
           type='text'
           placeholder='Search Here...'
-          value={searchTerm}
+          value={props.searchTerm}
           focusBorderColor='cyan.500'
           onChange={handleChange}
         />
