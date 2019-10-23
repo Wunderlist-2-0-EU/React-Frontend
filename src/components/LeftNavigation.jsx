@@ -1,6 +1,8 @@
-import React from "react";
-import { useRouteMatch, Link as RouterLink } from "react-router-dom";
-import { Text, Stack } from "@chakra-ui/core";
+import React from 'react';
+import { connect } from 'react-redux';
+import { useRouteMatch, Link as RouterLink } from 'react-router-dom';
+import { filterByDate } from '../actionCreators';
+import { Text, Stack } from '@chakra-ui/core';
 
 export const SideNavLink = props => {
   const match = useRouteMatch();
@@ -9,14 +11,19 @@ export const SideNavLink = props => {
 
 // <SideNavLink to="/overdue"> Overdue </SideNavLink>
 
-const LeftNavigation = () => {
+const LeftNavigation = props => {
   return (
-    <Stack maxWidth="180px" mx="auto">
+    <Stack maxWidth='180px' mx='auto'>
       <SideNavLink>Overdue</SideNavLink>
-      <SideNavLink>Today</SideNavLink>
+      <SideNavLink onClick={() => props.filterByDate(Date.now())}>
+        Today
+      </SideNavLink>
       <SideNavLink>Daily</SideNavLink>
     </Stack>
   );
 };
 
-export default LeftNavigation;
+export default connect(
+  state => state,
+  { filterByDate }
+)(LeftNavigation);

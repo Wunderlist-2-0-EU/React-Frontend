@@ -1,7 +1,7 @@
 import React from 'react';
 import AddTodoForm from './AddTodoForm';
-import { Box, Flex, Stack } from '@chakra-ui/core';
-import LeftNavigation, { SideNavLink } from './LeftNavigation';
+import { Box, Flex } from '@chakra-ui/core';
+import LeftNavigation from './LeftNavigation';
 import EditTodoForm from './EditTodoForm';
 import TodoList from './TodoList';
 import { connect } from 'react-redux';
