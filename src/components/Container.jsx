@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import Navigation from './Navigation';
 
 function Container(props) {
-  const [searchTerm, setSearchTerm] = React.useState();
+  const [searchTerm, setSearchTerm] = React.useState('');
   return (
     <Box>
       <Navigation 
