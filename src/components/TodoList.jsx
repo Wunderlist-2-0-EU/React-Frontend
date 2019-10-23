@@ -15,6 +15,7 @@ const Loading = () => (
 );
 
 const TodoList = props => {
+
   const history = useHistory();
   const match = useRouteMatch();
   // debugger;
@@ -31,10 +32,11 @@ const TodoList = props => {
   if (props.tasks.isFetching) {
     return <Loading />;
   }
-
   return (
     <div>
-      {props.tasks.taskList.map(todo => (
+      {props.displayedTasks.state
+      .filter(task => props.searchTerm ? task.task.includes(props.searchTerm) : true)
+      .map(todo => (
         <Todo
           key={todo.id}
           task={todo.task}

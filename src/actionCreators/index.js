@@ -43,17 +43,19 @@ export const logout = () => {
 // Tasks Action Creators
 export const getTaskList = () => dispatch => {
   dispatch({ type: types.REQUEST_START });
+  // debugger;
   axiosWithAuth()
     .get("api/todos")
     .then(res => {
       // debugger;
+      dispatch({ type: types.RESET_DISPLAYED_TASKS, payload: res.data });
       dispatch({ type: types.GET_ALL_TASKS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       // debugger;
       dispatch({
         type: types.GET_ALL_TASKS_FAILURE,
-        payload: err.response.data
+        payload: err.response
       });
     });
 };
@@ -94,6 +96,7 @@ export const EditTask = task => dispatch => {
     .then(res => {
       // debugger;
       dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
+
     })
     .catch(err => {
       debugger;
@@ -111,6 +114,20 @@ export const deleteTask = id => dispatch => {
     .catch(err => {
       dispatch({ type: types.DELETE_TASK_FAILURE, payload: err.response.data });
     });
+};
+
+// Filtered Tasks Acton Creators
+export const filterByDate = date => dispatch => {
+  dispatch({ type: types.FILTER_BY_DATE, payload: date });
+};
+
+export const filterBySearchTerm = searchTerm => dispatch => {
+  debugger;
+  dispatch({ type: types.FILTER_BY_SEARCH_TERM, payload: searchTerm });
+};
+
+export const resetDisplayedTasks = tasks => dispatch => {
+  dispatch({ type: types.RESET_DISPLAYED_TASKS, payload: tasks });
 };
 
 // User Action Creators

@@ -3,5 +3,6 @@ import { combineReducers } from 'redux';
 
 export const rootReducer = combineReducers({
   onBoarding: reducers.onBoardingReducer,
-  tasks: reducers.taskListReducer
+  tasks: reducers.taskListReducer,
+  displayedTasks: reducers.displayTasksReducer
 });

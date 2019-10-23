@@ -52,37 +52,16 @@ export const onBoardingReducer = (state = initialOnboardingState, action) => {
 };
 
 const initialTaskList = {
-  taskList: [
-    {
-      id: 64,
-      user_id: null,
-      title: "Lambda",
-      task: "Build Documentation",
-      notes: null,
-      setDate: "Tomorrow",
-      completed: null,
-      created_at: "2019-07-21T14:30:01.322Z",
-      updated_at: "2019-07-21T14:30:01.322Z"
-    },
-    {
-      id: 65,
-      user_id: null,
-      title: "Lambda",
-      task: "WEBPT8 TL",
-      notes: null,
-      setDate: "Tonight",
-      completed: null,
-      created_at: "2019-07-21T14:30:32.381Z",
-      updated_at: "2019-07-21T14:30:32.381Z"
-    }
-  ],
-  error: "",
+
+  taskList: [],
+  error: '',
   isFetching: false
 };
 
 export const taskListReducer = (state = initialTaskList, action) => {
   switch (action.type) {
     case types.REQUEST_START:
+      // debugger;
       return {
         ...state,
         isFetching: true
@@ -139,6 +118,47 @@ export const taskListReducer = (state = initialTaskList, action) => {
         ...state,
         error: action.payload,
         isFetching: false
+      };
+    default:
+      return state;
+  }
+};
+
+const getDateToCompare = date => {
+  const formattedDate = new Date(date);
+  const year = formattedDate.getFullYear();
+  const month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
+  const day = ('0' + formattedDate.getDate()).slice(-2);
+  return `${year}${month}${day}`;
+};
+
+const intitialDisplayedTasksState = {
+  state: []
+};
+
+export const displayTasksReducer = (
+  state = intitialDisplayedTasksState,
+  action
+) => {
+  switch (action.type) {
+    case types.FILTER_BY_DATE:
+      return {
+        state: state.state.filter(task => {
+          return (
+            getDateToCompare(task.setDate) === getDateToCompare(action.payload)
+          );
+        })
+      };
+    case types.FILTER_BY_SEARCH_TERM:
+      return {
+        state: state.state.filter(task => {
+          return task.task.includes(action.payload);
+        })
+      };
+    case types.RESET_DISPLAYED_TASKS:
+      // debugger;
+      return {
+        state: action.payload
       };
     default:
       return state;

@@ -9,11 +9,17 @@ import Navigation from "./Navigation";
 import PrivateRoute from "./PrivateRoute";
 
 function Container(props) {
+  const [searchTerm, setSearchTerm] = React.useState();
   return (
     <Box>
-      <Navigation />
-      <Flex bg="gray.50" minHeight="100vh">
-        <Box paddingTop="100px" as="aside" id="side-nav" flexBasis="20%">
+
+      <Navigation 
+        setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
+      />
+      <Flex bg='gray.50' minHeight='100vh'>
+        <Box paddingTop='100px' as='aside' id='side-nav' flexBasis='20%'>
+
           <LeftNavigation />
         </Box>
         <Box
@@ -25,7 +31,7 @@ function Container(props) {
           flexBasis="50%"
         >
           <AddTodoForm />
-          <TodoList />
+          <TodoList searchTerm={searchTerm} />
         </Box>
         <Box id="edit-form-container" flexBasis="30%">
           <PrivateRoute path="/todoapp/edit/:id" component={EditTodoForm} />
