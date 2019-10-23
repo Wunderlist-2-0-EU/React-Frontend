@@ -22,7 +22,9 @@ const TodoList = props => {
   }
   return (
     <div>
-      {props.displayedTasks.state.map(todo => (
+      {props.displayedTasks.state
+      .filter(task => props.searchTerm ? task.task.includes(props.searchTerm) : true)
+      .map(todo => (
         <Todo
           key={todo.id}
           task={todo.task}

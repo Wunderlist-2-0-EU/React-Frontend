@@ -10,7 +10,6 @@ export const SideNavLink = props => {
 };
 
 const LeftNavigation = props => {
-  debugger
   return (
     <Stack maxWidth='180px' mx='auto'>
       <SideNavLink onClick={() => props.resetDisplayedTasks(props.tasks.taskList)}>All Tasks</SideNavLink>
