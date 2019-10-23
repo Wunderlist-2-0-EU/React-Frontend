@@ -1,16 +1,18 @@
-import React from "react";
-import { Box, Text, Heading } from "@chakra-ui/core";
-import SearchForm from "./SearchForm";
+// NOT SURE IF WE NEED THIS NOW??
 
-function HeaderNav() {
-  return (
-    <Box backgroundColor="cyan">
-      <Heading size="lg" marginLeft="100px">
-        Wunderlist 2.0
-      </Heading>
-      <SearchForm />
-    </Box>
-  );
-}
+// import React from "react";
+// import { Box, Text, Heading } from "@chakra-ui/core";
+// import SearchForm from "./SearchForm";
 
-export default HeaderNav;
+// function HeaderNav() {
+//   return (
+//     <Box backgroundColor="cyan">
+//       <Heading size="lg" marginLeft="100px">
+//         Wunderlist 2.0
+//       </Heading>
+//       <SearchForm />
+//     </Box>
+//   );
+// }
+
+// export default HeaderNav;
