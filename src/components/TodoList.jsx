@@ -56,13 +56,6 @@ const TodoList = props => {
           }}
         />
       ))}
-
-      <Stack isInline spacing="50px" marginTop="30px">
-        <SubtleButton1>Mark Completed</SubtleButton1>
-        {/* <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2>
-
-        <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} /> */}
-      </Stack>
     </div>
   );
 };
