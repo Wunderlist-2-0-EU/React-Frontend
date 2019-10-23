@@ -111,6 +111,14 @@ export const taskListReducer = (state = initialTaskList, action) => {
         error: action.payload,
         isFetching: false
       };
+// <<<<<<< liam-sutton
+// =======
+//     case types.UPDATE_TASK:
+//       return {
+//         ...state,
+//         // isFetching: true
+//       };
+// >>>>>>> master
     case types.UPDATE_TASK_SUCCESS:
       return {
         ...state,
@@ -123,6 +131,14 @@ export const taskListReducer = (state = initialTaskList, action) => {
         error: action.payload,
         isFetching: false
       };
+// <<<<<<< liam-sutton
+// =======
+//     case types.DELETE_TASK:
+//       return {
+//         ...state,
+//         // isFetching: true
+//       };
+// >>>>>>> master
     case types.DELETE_TASK_SUCCESS:
       return {
         ...state,

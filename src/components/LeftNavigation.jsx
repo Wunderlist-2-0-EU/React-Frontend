@@ -16,7 +16,16 @@
 // </Page>
 // ```
 
-import React from 'react';
+import React from "react";
+import { useRouteMatch, Link as RouterLink } from "react-router-dom";
+import { Text } from "@chakra-ui/core";
+
+export const SideNavLink = props => {
+  const match = useRouteMatch();
+  return <Text {...props} />;
+};
+
+// <SideNavLink to="/overdue"> Overdue </SideNavLink>
 
 const LeftNavigation = () => {
   return (
