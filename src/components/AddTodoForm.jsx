@@ -24,32 +24,7 @@ export function AddTodoForm(props) {
             )}
           />
 
-          <Stack isInline>
-            <Field
-              name='title'
-              render={props => (
-                <Input
-                  placeholder='Add Title Here'
-                  focusBorderColor='cyan.500'
-                  {...props.field}
-                />
-              )}
-            />
-
-            <Box size='24px' />
-
-            <Field
-              name='setDate'
-              render={props => (
-                <Input
-                  type='date'
-                  placeholder='Set due date'
-                  focusBorderColor='cyan.500'
-                  {...props.field}
-                />
-              )}
-            />
-          </Stack>
+          
         </Box>
 
         <Button type='submit' paddingX='40px' variantColor='cyan' color='white'>
@@ -70,13 +45,11 @@ function getTodayDate() {
 const AddTodoFormik = withFormik({
   mapPropsToValues({ title, task, setDate }) {
     return {
-      title: title || '',
       task: task || '',
       setDate: setDate || getTodayDate() //sets the default date
     };
   },
   validationSchema: yup.object().shape({
-    title: yup.string().required('Please enter a title'),
     task: yup.string().required('Please enter your todo'),
     setDate: yup.date().required('please set the due date')
   }),
@@ -86,7 +59,7 @@ const AddTodoFormik = withFormik({
 
     // Step 2: Create the todo object the way the endpoint requires
     const newTodo = {
-      title: values.title,
+      title: values.task,
       task: values.task,
       setDate: values.setDate,
       user_id: Number(userID)
