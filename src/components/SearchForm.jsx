@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input, Stack } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actionCreators';
-import SearchResults from './SearchResults';
 
 function SearchForm(props) {
   const handleChange = event => {
@@ -21,7 +20,6 @@ function SearchForm(props) {
           onChange={handleChange}
         />
       </Stack>
-      {/*<SearchResults searchTerm={searchTerm} searchResults={searchResults} />*/}
     </>
   );
 }

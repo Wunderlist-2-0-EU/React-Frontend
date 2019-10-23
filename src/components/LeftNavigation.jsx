@@ -1,22 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useRouteMatch, Link as RouterLink } from 'react-router-dom';
 import { filterByDate, resetDisplayedTasks } from '../actionCreators';
 import { Text, Stack } from '@chakra-ui/core';
 
 export const SideNavLink = props => {
-  const match = useRouteMatch();
   return <Text {...props} />;
 };
 
+const day = new Date();
+const nextDay = new Date(day);
+
 const LeftNavigation = props => {
   return (
-    <Stack maxWidth='180px' mx='auto'>
-      <SideNavLink onClick={() => props.resetDisplayedTasks(props.tasks.taskList)}>All Tasks</SideNavLink>
-      <SideNavLink onClick={() => props.filterByDate(Date.now())}>
+    <Stack className='side-nav__items' maxWidth='180px' mx='auto'>
+      <SideNavLink
+        className='side-nav__item'
+        onClick={() => props.resetDisplayedTasks(props.tasks.taskList)}
+      >
+        All Tasks
+      </SideNavLink>
+      <SideNavLink
+        className='side-nav__item'
+        onClick={() => props.filterByDate(Date.now())}
+      >
         Today
       </SideNavLink>
-      <SideNavLink>Daily</SideNavLink>
+      <SideNavLink
+        className='side-nav__item'
+        onClick={() => props.filterByDate(nextDay.setDate(day.getDate() + 1))}
+      >
+        Tomorrow
+      </SideNavLink>
     </Stack>
   );
 };

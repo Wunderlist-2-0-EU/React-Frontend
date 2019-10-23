@@ -1,90 +1,86 @@
-import React, { useEffect } from "react";
+import React from 'react';
 import {
   FormControl,
   FormLabel,
   Input,
   Button,
   Select,
-  Box,
-  Stack,
-  Flex,
   FormErrorMessage,
   Checkbox
-} from "@chakra-ui/core";
-import { withFormik, Field, Form } from "formik";
-import { connect } from "react-redux";
-import * as actionCreators from "../actionCreators";
-import * as yup from "yup";
+} from '@chakra-ui/core';
+import { withFormik, Field, Form } from 'formik';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actionCreators';
+import * as yup from 'yup';
 
 export function EditTodoForm(props) {
-  //   debugger;
   return (
     <Form>
       <Field
-        name="task"
+        name='task'
         render={({ field, form }) => (
           <FormControl
             isInvalid={form.errors[field.name] && form.touched[field.name]}
           >
             {/* <FormLabel htmlFor="task">First name</FormLabel> */}
-            <Input {...field} id="task" placeholder="Enter task" />
+            <Input {...field} id='task' placeholder='Enter task' />
             <FormErrorMessage>{form.errors[field.name]}</FormErrorMessage>
           </FormControl>
         )}
       />
       <Field
-        name="setDate"
+        name='setDate'
         render={({ field, form }) => (
           <FormControl
             isInvalid={form.errors[field.name] && form.touched[field.name]}
           >
-            <FormLabel htmlFor="set-date">Due </FormLabel>
+            <FormLabel htmlFor='set-date'>Due </FormLabel>
             <Input
               {...field}
-              type="date"
-              id="set-date"
-              placeholder="Enter due date"
-              maxWidth="180px"
+              type='date'
+              id='set-date'
+              placeholder='Enter due date'
+              maxWidth='180px'
             />
             <FormErrorMessage>{form.errors[field.name]}</FormErrorMessage>
           </FormControl>
         )}
       />
       <Field
-        name="completed"
+        name='completed'
         render={({ field, form }) => (
           <FormControl
             isInvalid={form.errors[field.name] && form.touched[field.name]}
           >
-            <FormLabel htmlFor="set-date">Completed?</FormLabel>
-            <Checkbox id="completed" isChecked={field.value} {...field} />
+            <FormLabel htmlFor='set-date'>Completed?</FormLabel>
+            <Checkbox id='completed' isChecked={field.value} {...field} />
             <FormErrorMessage>{form.errors[field.name]}</FormErrorMessage>
           </FormControl>
         )}
       />
       <Field
-        name="repeat"
+        name='repeat'
         render={({ field, form }) => (
           <FormControl
             isInvalid={form.errors[field.name] && form.touched[field.name]}
           >
-            <FormLabel htmlFor="repeat">No Repeat</FormLabel>
-            <Select id="repeat" placeholder="No Repeat" {...field}>
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
+            <FormLabel htmlFor='repeat'>No Repeat</FormLabel>
+            <Select id='repeat' placeholder='No Repeat' {...field}>
+              <option value='daily'>Daily</option>
+              <option value='weekly'>Weekly</option>
+              <option value='monthly'>Monthly</option>
             </Select>
             <FormErrorMessage>{form.errors[field.name]}</FormErrorMessage>
           </FormControl>
         )}
       />
 
-      <Button type="submit" paddingX="40px" variantColor="cyan" color="white">
+      <Button type='submit' paddingX='40px' variantColor='cyan' color='white'>
         Save
       </Button>
       <Button
         onClick={() => {
-          props.history.push("/todoapp");
+          props.history.push('/todoapp');
         }}
       >
         Cancel
@@ -100,9 +96,9 @@ const EditTodoFormik = withFormik({
     const taskData = store.find(task => task.id === Number(id));
     if (!taskData) {
       return {
-        title: title || "",
-        task: task || "",
-        setDate: setDate || "",
+        title: title || '',
+        task: task || '',
+        setDate: setDate || '',
         completed: completed || false
       };
     }
@@ -116,14 +112,14 @@ const EditTodoFormik = withFormik({
   },
   enableReinitialize: true,
   validationSchema: yup.object().shape({
-    title: yup.string().required("Please enter a title"),
-    task: yup.string().required("Please enter your todo"),
-    setDate: yup.date().required("please set the due date"),
+    title: yup.string().required('Please enter a title'),
+    task: yup.string().required('Please enter your todo'),
+    setDate: yup.date().required('please set the due date'),
     completed: yup.bool()
   }),
   handleSubmit(values, { props }) {
-    props.EditTask(values);
-    props.history.push("/todoapp");
+    props.editTask(values);
+    props.history.push('/todoapp');
   }
 })(EditTodoForm);
 

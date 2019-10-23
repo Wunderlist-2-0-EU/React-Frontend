@@ -12,3 +12,16 @@
   width: 50rem;
   color: black;
 }
+
+.side-nav__item {
+  cursor: pointer;
+  border-bottom: 1px solid #00b5d8;
+  padding-bottom: 0.5rem;
+  transition: ease-out 0.2s;
+}
+
+.side-nav__item:hover {
+  background: #00b5d8;
+  transition: ease-in 0.2s;
+  color: white;
+}

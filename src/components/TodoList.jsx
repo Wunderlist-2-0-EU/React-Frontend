@@ -1,29 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import * as actionCreators from "../actionCreators";
-import Todo from "./Todo";
-import { Flex, Spinner, Text, Stack } from "@chakra-ui/core";
-import { SubtleButton1, SubtleButton2 } from "./CustomButtons";
-import DeleteTodo from "./DeleteTodo";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actionCreators';
+import Todo from './Todo';
+import { Flex, Spinner, Text, Stack } from '@chakra-ui/core';
+import { SubtleButton1 } from './CustomButtons';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 const Loading = () => (
-  <Flex align="center" justify="center" padding="40px">
-    <Spinner color="cyan.500" />
+  <Flex align='center' justify='center' padding='40px'>
+    <Spinner color='cyan.500' />
     <Text ml={4}>Loading Todolist</Text>
   </Flex>
 );
 
 const TodoList = props => {
-
   const history = useHistory();
   const match = useRouteMatch();
-  // debugger;
-  const { task, isChecked, onDelete, onEdit, onCheck } = props;
-  const [isOpen, setIsOpen] = useState();
-
-  const onClose = () => setIsOpen(false);
-  const onOpen = () => setIsOpen(true);
 
   useEffect(() => {
     props.getTaskList();
@@ -35,33 +27,32 @@ const TodoList = props => {
   return (
     <div>
       {props.displayedTasks.state
-      .filter(task => props.searchTerm ? task.task.includes(props.searchTerm) : true)
-      .map(todo => (
-        <Todo
-          key={todo.id}
-          task={todo.task}
-          isChecked={todo.completed}
-          onDelete={() => {
-            props.deleteTask(todo.id);
-          }}
-          onEdit={() => {
-            history.push(`${match.path}/edit/${todo.id}`);
-          }}
-          onCheck={() => {
-            const newTodo = {
-              ...todo,
-              completed: !todo.completed
-            };
-            props.EditTask(newTodo);
-          }}
-        />
-      ))}
+        .filter(task =>
+          props.searchTerm ? task.task.includes(props.searchTerm) : true
+        )
+        .map(todo => (
+          <Todo
+            key={todo.id}
+            task={todo.task}
+            isChecked={todo.completed}
+            onDelete={() => {
+              props.deleteTask(todo.id);
+            }}
+            onEdit={() => {
+              history.push(`${match.path}/edit/${todo.id}`);
+            }}
+            onCheck={() => {
+              const newTodo = {
+                ...todo,
+                completed: !todo.completed
+              };
+              props.editTask(newTodo);
+            }}
+          />
+        ))}
 
-      <Stack isInline spacing="50px" marginTop="30px">
+      <Stack isInline spacing='50px' marginTop='30px'>
         <SubtleButton1>Mark Completed</SubtleButton1>
-        {/* <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2>
-
-        <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} /> */}
       </Stack>
     </div>
   );

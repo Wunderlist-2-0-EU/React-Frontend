@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Checkbox, Stack, Flex, Button, Box } from "@chakra-ui/core";
-import { SubtleButton1, SubtleButton2 } from "./CustomButtons";
-import DeleteTodo from "./DeleteTodo";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Checkbox, Stack, Flex, Button, Box } from '@chakra-ui/core';
+import { SubtleButton2 } from './CustomButtons';
+import DeleteTodo from './DeleteTodo';
 
 function Todo(props) {
   const { task, isChecked, onDelete, onEdit, onCheck } = props;
@@ -12,12 +12,12 @@ function Todo(props) {
   const onOpen = () => setIsOpen(true);
 
   return (
-    <Box marginX="auto" maxWidth="500px">
-      <Flex marginTop="30px">
+    <Box marginX='auto' maxWidth='500px'>
+      <Flex marginTop='30px'>
         <Stack spacing={10} isInline>
           <Checkbox
             onChange={() => onCheck(!isChecked)}
-            variantColor="cyan"
+            variantColor='cyan'
             isChecked={isChecked}
           >
             {task}
@@ -25,10 +25,10 @@ function Todo(props) {
         </Stack>
         <Flex>
           <Button
-            size="sm"
-            variant="outline"
-            variantColor="cyan"
-            marginLeft="105px"
+            size='sm'
+            variant='outline'
+            variantColor='cyan'
+            marginLeft='105px'
             onClick={() => onEdit()}
           >
             Edit

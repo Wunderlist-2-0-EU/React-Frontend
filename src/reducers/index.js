@@ -1,9 +1,9 @@
-import * as types from "../actionTypes";
+import * as types from '../actionTypes';
 
 const initialOnboardingState = {
-  user_id: "",
-  message: "",
-  error: "",
+  user_id: '',
+  message: '',
+  error: '',
   isFetching: false,
   isLoggedIn: false
 };
@@ -14,7 +14,7 @@ export const onBoardingReducer = (state = initialOnboardingState, action) => {
       return {
         ...state,
         isFetching: true,
-        error: ""
+        error: ''
       };
     case types.REGISTER_SUCCESS:
       return {
@@ -52,7 +52,6 @@ export const onBoardingReducer = (state = initialOnboardingState, action) => {
 };
 
 const initialTaskList = {
-
   taskList: [],
   error: '',
   isFetching: false
@@ -61,7 +60,7 @@ const initialTaskList = {
 export const taskListReducer = (state = initialTaskList, action) => {
   switch (action.type) {
     case types.REQUEST_START:
-      // debugger;
+      // ;
       return {
         ...state,
         isFetching: true
@@ -156,29 +155,29 @@ export const displayTasksReducer = (
         })
       };
     case types.RESET_DISPLAYED_TASKS:
-      // debugger;
+      // ;
       return {
         state: action.payload
       };
     case types.DELETE_TASK_SUCCESS:
-        return {
-          ...state,
-          state: state.state.filter(task => task.id !== action.payload),
-        };
+      return {
+        ...state,
+        state: state.state.filter(task => task.id !== action.payload)
+      };
     case types.ADD_TASK_SUCCESS:
-        return {
-          ...state,
-          state: state.state.concat(action.payload),
-        };
+      return {
+        ...state,
+        state: state.state.concat(action.payload)
+      };
     case types.UPDATE_TASK_SUCCESS:
-        return {
-          state: state.state.map(task => {
-            if (task.id === action.payload.id) {
-              return action.payload;
-            }
-            return task;
-          }),
-        };
+      return {
+        state: state.state.map(task => {
+          if (task.id === action.payload.id) {
+            return action.payload;
+          }
+          return task;
+        })
+      };
     default:
       return state;
   }
