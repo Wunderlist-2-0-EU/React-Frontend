@@ -14,7 +14,7 @@ function App() {
       <Route exact path='/' component={LoginForm} />
       <Route path='/signup' component={SignupForm} />
       <PrivateRoute path='/todoapp' component={Container} />
-// =======
+{/* // =======
 // import React from "react";
 // import { Route } from "react-router-dom";
 // import { Heading } from "@chakra-ui/core";
@@ -31,11 +31,11 @@ function App() {
 //       {/* <Heading textAlign="center" color="#00B5D8" paddingY="20px">
 //         Wunderlist-2.0
 //       </Heading> */}
-//       <Route exact path="/" component={LoginForm} />
+{/* //       <Route exact path="/" component={LoginForm} />
 //       <Route path="/signup" component={SignupForm} />
 //       <PrivateRoute path="/todolist" component={TodoList} />
 //       <Route path="/layout" component={Container} />
-// >>>>>>> master
+// >>>>>>> master */}
     </div>
   );
 }

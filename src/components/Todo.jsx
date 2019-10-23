@@ -3,7 +3,7 @@
 // import { Checkbox, Stack, Flex, Button, Box } from '@chakra-ui/core';
 // import { SubtleButton1 } from './CustomButtons';
 // import DeleteTodo from './DeleteTodo';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 // function Todo({ todo, isChecked }) {
 // =======
@@ -22,33 +22,33 @@ function Todo(props) {
     <Box marginX='auto' maxWidth='500px'>
       <Flex marginTop='30px'>
         <Stack spacing={10} isInline>
-<!-- <<<<<<< liam-sutton
+{/* <!-- <<<<<<< liam-sutton
           <Checkbox variantColor='cyan' isChecked={isChecked}>
             <p>{todo.task}</p>
-======= -->
+======= --> */}
           <Checkbox
             onChange={() => onCheck(!isChecked)}
             variantColor="cyan"
             isChecked={isChecked}
           >
             {task}
-<!-- >>>>>>> master -->
+{/* <!-- >>>>>>> master --> */}
           </Checkbox>
         </Stack>
 
         <Button
-<!-- <<<<<<< liam-sutton
-          size='sm'
-          variant='outline'
-          variantColor='cyan'
-          marginLeft='105px'
-======= -->
+// <!-- <<<<<<< liam-sutton
+//           size='sm'
+//           variant='outline'
+//           variantColor='cyan'
+//           marginLeft='105px'
+// ======= -->
           size="sm"
           variant="outline"
           variantColor="cyan"
           marginLeft="105px"
           onClick={onEdit}
-<!-- >>>>>>> master -->
+// <!-- >>>>>>> master -->
         >
           Edit
         </Button>

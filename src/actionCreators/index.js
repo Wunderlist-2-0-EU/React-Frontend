@@ -39,7 +39,7 @@ export const login = (credentials, history) => dispatch => {
 // >>>>>>> master
     })
     .catch(err => {
-      dispatch({ type: types.LOGIN_SUCCESS, payload: err.response.data });
+      dispatch({ type: types.LOGIN_FAILURE, payload: err.response.data });
     });
 };
 
@@ -117,7 +117,7 @@ export const EditTask = id => dispatch => {
 //   // dispatch({ type: types.UPDATE_TASK });
 // >>>>>>> master
   axiosWithAuth()
-    .put(`https://wunderlist-2.herokuapp.com/api/todos/${task.id}`, task)
+    .put(`api/todos/${id}`, id)
     .then(res => {
 // <<<<<<< liam-sutton
       debugger;
@@ -140,13 +140,11 @@ export const deleteTask = id => dispatch => {
 //   // dispatch({ type: types.DELETE_TASK });
 // >>>>>>> master
   axiosWithAuth()
-    .delete(`https://wunderlist-2.herokuapp.com/api/todos/${id}`)
+    .delete(`api/todos/${id}`)
     .then(res => {
-      // debugger;
       dispatch({ type: types.DELETE_TASK_SUCCESS, payload: id });
     })
     .catch(err => {
-      // debugger;
       dispatch({ type: types.DELETE_TASK_FAILURE, payload: err.response.data });
     });
 };

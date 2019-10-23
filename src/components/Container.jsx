@@ -1,6 +1,6 @@
 // <<<<<<< liam-sutton
 // import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import { Box, Flex, Button } from '@chakra-ui/core';
 // import { SubtleButton1 } from './CustomButtons';
 // import AddTodoForm from './AddTodoForm';

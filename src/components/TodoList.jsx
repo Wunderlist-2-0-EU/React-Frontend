@@ -34,13 +34,13 @@ const TodoList = props => {
     props.getTaskList();
   }, []);
 
-  if (props.taskList.isFetching) {
+  if (props.tasks.isFetching) {
     return <Loading />;
   }
 
   return (
     <div>
-      {props.taskList.taskList.map(todo => (
+      {props.tasks.taskList.map(todo => (
         <Todo
           key={todo.id}
           task={todo.task}
@@ -61,7 +61,7 @@ const TodoList = props => {
       {/* <Link to="/">
         <button onClick={() => dispatch(logout())}>Logout</button>
       </Link> */}
-<!-- >>>>>>> master -->
+{/* <!-- >>>>>>> master --> */}
     </div>
   );
 };

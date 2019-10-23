@@ -142,7 +142,8 @@ export const taskListReducer = (state = initialTaskList, action) => {
     case types.DELETE_TASK_SUCCESS:
       return {
         ...state,
-        taskList: state.taskList.filter(task => task.id !== action.payload)
+        taskList: state.taskList.filter(task => task.id !== action.payload),
+        isFetching: false
       };
     case types.DELETE_TASK_FAILURE:
       return {
