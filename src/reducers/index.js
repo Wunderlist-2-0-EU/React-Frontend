@@ -170,6 +170,16 @@ export const displayTasksReducer = (
           ...state,
           state: state.state.concat(action.payload),
         };
+    case types.UPDATE_TASK_SUCCESS:
+      return {
+        ...state,
+        state: state.state.map(task => {
+          if (task.id === action.payload.id) {
+            return action.payload;
+          }
+          return task;
+        }),
+      };
     default:
       return state;
   }
