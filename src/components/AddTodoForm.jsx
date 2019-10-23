@@ -34,20 +34,20 @@ export function AddTodoForm(props) {
   // debugger;
   const { todo, addTask } = props;
   // const dispatch = useDispatch();
-  const [formValues, setFormValues] = useState({
-    title: "A",
-    user_id: 42,
-    setDate: "C",
-    task: "D"
-  });
-  const handleChange = event => {
-    setFormValues({ ...formValues, [event.target.name]: event.target.value });
-  };
+  // const [formValues, setFormValues] = useState({
+  //   title: "A",
+  //   user_id: 42,
+  //   setDate: "C",
+  //   task: "D"
+  // });
+  // const handleChange = event => {
+  //   setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  // };
 
-  const addTodo = event => {
-    debugger;
-    addTask(formValues);
-  };
+  // const addTodo = event => {
+  //   debugger;
+  //   addTask(formValues);
+  // };
 
   return (
     <Form>
