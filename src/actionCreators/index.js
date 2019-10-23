@@ -91,6 +91,14 @@ export const addTask = task => dispatch => {
 
 export const EditTask = task => dispatch => {
   dispatch({ type: types.REQUEST_START });
+  if (task.completed === true && task.notes !== 'No Repeat' && task.notes !== null) {
+    dispatch(addTask({
+      setDate: task.setDate,
+      task: task.task,
+      title: task.title,
+      user_id: task.user_id,
+    }));
+  }
   axiosWithAuth()
     .put(`api/todos/${task.id}`, task)
     .then(res => {
