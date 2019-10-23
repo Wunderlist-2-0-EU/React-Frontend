@@ -52,9 +52,8 @@ export const onBoardingReducer = (state = initialOnboardingState, action) => {
 };
 
 const initialTaskList = {
-
   taskList: [],
-  error: '',
+  error: "",
   isFetching: false
 };
 
@@ -127,8 +126,8 @@ export const taskListReducer = (state = initialTaskList, action) => {
 const getDateToCompare = date => {
   const formattedDate = new Date(date);
   const year = formattedDate.getFullYear();
-  const month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
-  const day = ('0' + formattedDate.getDate()).slice(-2);
+  const month = ("0" + (formattedDate.getMonth() + 1)).slice(-2);
+  const day = ("0" + formattedDate.getDate()).slice(-2);
   return `${year}${month}${day}`;
 };
 
@@ -152,7 +151,7 @@ export const displayTasksReducer = (
     case types.FILTER_BY_SEARCH_TERM:
       return {
         state: state.state.filter(task => {
-          return task.task.includes(action.payload);
+          return task.task.toLowerCase().includes(action.payload.toLowerCase());
         })
       };
     case types.RESET_DISPLAYED_TASKS:
@@ -161,24 +160,24 @@ export const displayTasksReducer = (
         state: action.payload
       };
     case types.DELETE_TASK_SUCCESS:
-        return {
-          ...state,
-          state: state.state.filter(task => task.id !== action.payload),
-        };
+      return {
+        ...state,
+        state: state.state.filter(task => task.id !== action.payload)
+      };
     case types.ADD_TASK_SUCCESS:
-        return {
-          ...state,
-          state: state.state.concat(action.payload),
-        };
+      return {
+        ...state,
+        state: state.state.concat(action.payload)
+      };
     case types.UPDATE_TASK_SUCCESS:
-        return {
-          state: state.state.map(task => {
-            if (task.id === action.payload.id) {
-              return action.payload;
-            }
-            return task;
-          }),
-        };
+      return {
+        state: state.state.map(task => {
+          if (task.id === action.payload.id) {
+            return action.payload;
+          }
+          return task;
+        })
+      };
     default:
       return state;
   }
