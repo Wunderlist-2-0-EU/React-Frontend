@@ -27,17 +27,17 @@ const TodoList = props => {
     <>
       <div>
         {props.displayedTasks.state
-          .filter(task =>
-            props.searchTerm ? task.task.includes(props.searchTerm) : true
-          )
-          .filter(
-            task =>
-              task.completed === props.showCompleted || task.completed === null
-          )
-          .filter(
-            task =>
-              Number(task.user_id) === Number(localStorage.getItem('userID'))
-          )
+          .filter(task => {
+            const searchMatch = props.searchTerm
+              ? task.task.includes(props.searchTerm)
+              : true;
+            const completedTasks =
+              task.completed === props.showCompleted || task.completed === null;
+            const currentUserTasks =
+              Number(task.user_id) === Number(localStorage.getItem('userID'));
+
+            return searchMatch && completedTasks && currentUserTasks;
+          })
           .map(todo => (
             <Todo
               key={todo.id}

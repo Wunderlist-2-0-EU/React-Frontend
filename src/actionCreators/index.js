@@ -8,15 +8,17 @@ export const register = (credentials, history) => dispatch => {
   axios
     .post('https://wunderlist-2.herokuapp.com/api/auth/register', credentials)
     .then(res => {
-      // we need to also store the userID in localStorage because addTodo requires a user_id)
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userID', res.data.userID);
       dispatch({ type: types.REGISTER_SUCCESS, payload: res.data });
       history.push('/todoapp');
     })
     .catch(err => {
-      debugger;
-      dispatch({ type: types.REGISTER_FAILURE, payload: err.response.data });
+      dispatch({
+        type: types.REGISTER_FAILURE,
+        payload: (err.response.data.message = 'Username already exits')
+      });
+      alert(err.response.data.message);
     });
 };
 
@@ -32,7 +34,11 @@ export const login = (credentials, history) => dispatch => {
       history.push('/todoapp');
     })
     .catch(err => {
-      dispatch({ type: types.LOGIN_FAILURE, payload: err.response.data });
+      dispatch({
+        type: types.LOGIN_FAILURE,
+        payload: err.response.data.message
+      });
+      alert(err.response.data.message);
     });
 };
 
