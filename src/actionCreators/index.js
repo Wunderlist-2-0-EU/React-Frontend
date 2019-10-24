@@ -104,7 +104,6 @@ export const EditTask = task => dispatch => {
     .then(res => {
       // debugger;
       dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
-
     })
     .catch(err => {
       debugger;
@@ -130,7 +129,7 @@ export const filterByDate = date => dispatch => {
 };
 
 export const filterBySearchTerm = searchTerm => dispatch => {
-  debugger;
+  // debugger;
   dispatch({ type: types.FILTER_BY_SEARCH_TERM, payload: searchTerm });
 };
 

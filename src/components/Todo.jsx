@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Checkbox, Stack, Flex, Button, Box } from "@chakra-ui/core";
+import {
+  Checkbox,
+  Stack,
+  Flex,
+  Button,
+  Box,
+  IconButton
+} from "@chakra-ui/core";
 import { SubtleButton1, SubtleButton2 } from "./CustomButtons";
 import DeleteTodo from "./DeleteTodo";
+import { FaTrashAlt, FaRegEdit } from "react-icons/fa";
 
 function Todo(props) {
   const { task, isChecked, onDelete, onEdit, onCheck } = props;
@@ -12,8 +20,8 @@ function Todo(props) {
   const onOpen = () => setIsOpen(true);
 
   return (
-    <Box marginX="auto" maxWidth="500px">
-      <Flex marginTop="30px">
+    <Box>
+      <Flex marginTop="30px" justify="space-between">
         <Stack spacing={10} isInline>
           <Checkbox
             onChange={() => onCheck(!isChecked)}
@@ -23,19 +31,25 @@ function Todo(props) {
             {task}
           </Checkbox>
         </Stack>
-        <Flex>
-          {!isChecked && <Button
-            size="sm"
+        <Stack isInline spacing="20px" marginRight="20px">
+          <IconButton
+            onClick={() => onEdit()}
             variant="outline"
             variantColor="cyan"
-            marginLeft="105px"
-            onClick={() => onEdit()}
-          >
-            Edit
-          </Button>}
-          <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2>
+            size="sm"
+            aria-label="Edit"
+            icon={FaRegEdit}
+          />
           <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} />
-        </Flex>
+          <IconButton
+            onClick={onOpen}
+            variant="outline"
+            size="sm"
+            variantColor="red"
+            aria-label="Delete"
+            icon={FaTrashAlt}
+          />
+        </Stack>
       </Flex>
     </Box>
   );
