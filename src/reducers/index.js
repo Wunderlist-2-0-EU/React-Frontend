@@ -60,7 +60,6 @@ const initialTaskList = {
 export const taskListReducer = (state = initialTaskList, action) => {
   switch (action.type) {
     case types.REQUEST_START:
-      // ;
       return {
         ...state,
         isFetching: true

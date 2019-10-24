@@ -49,7 +49,6 @@ const Login = ({ errors, touched, isSubmitting }) => {
 
             <Button
               isLoading={isSubmitting}
-              // isFullWidth
               type='submit'
               size='lg'
               variantColor='cyan'

@@ -27,7 +27,6 @@ export const login = (credentials, history) => dispatch => {
   axios
     .post('https://wunderlist-2.herokuapp.com/api/auth/login', credentials)
     .then(res => {
-      // we need to also store the userID in localStorage because addTodo requires a user_id)
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userID', res.data.userID);
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data });
@@ -71,11 +70,9 @@ export const getSingleTask = id => dispatch => {
   axiosWithAuth()
     .get(`api/todos/${id}`)
     .then(res => {
-      // ;
       dispatch({ type: types.GET_SINGLE_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      // ;
       dispatch({
         type: types.GET_SINGLE_TASK_FAILURE,
         payload: err.response.data
@@ -114,7 +111,6 @@ export const editTask = task => dispatch => {
   axiosWithAuth()
     .put(`api/todos/${task.id}`, task)
     .then(res => {
-      // ;
       dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -134,7 +130,7 @@ export const deleteTask = id => dispatch => {
     });
 };
 
-// Filtered Tasks Acton Creators
+// Filtered Tasks Action Creators
 export const filterByDate = date => dispatch => {
   dispatch({ type: types.FILTER_BY_DATE, payload: date });
 };
