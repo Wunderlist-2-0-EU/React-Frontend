@@ -76,7 +76,7 @@ const Signup = ({ errors, touched, isSubmitting }) => {
             </Button>
           </Stack>
 
-          <Link to='/login'>
+          <Link to='/'>
             <Text
               marginX='auto'
               marginTop='20px'
