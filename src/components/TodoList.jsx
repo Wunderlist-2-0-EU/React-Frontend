@@ -34,7 +34,10 @@ const TodoList = props => {
             task =>
               task.completed === props.showCompleted || task.completed === null
           )
-          .filter(task => task.user_id === localStorage.getItem('userID'))
+          .filter(
+            task =>
+              Number(task.user_id) === Number(localStorage.getItem('userID'))
+          )
           .map(todo => (
             <Todo
               key={todo.id}
@@ -56,7 +59,6 @@ const TodoList = props => {
             />
           ))}
       </div>
-
     </>
   );
 };

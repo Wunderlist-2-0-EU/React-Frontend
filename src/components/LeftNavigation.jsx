@@ -16,6 +16,7 @@ const LeftNavigation = props => {
   return (
     <Stack maxWidth='180px' mx='auto'>
       <SideNavLink
+        className='side-nav__item'
         onClick={() => {
           props.resetDisplayedTasks(props.tasks.taskList);
           props.setShowCompleted(false);
@@ -24,6 +25,7 @@ const LeftNavigation = props => {
         All Tasks
       </SideNavLink>
       <SideNavLink
+        className='side-nav__item'
         onClick={() => {
           props.filterByDate(Date.now());
           props.setShowCompleted(false);
@@ -32,6 +34,7 @@ const LeftNavigation = props => {
         Today
       </SideNavLink>
       <SideNavLink
+        className='side-nav__item'
         onClick={() => {
           props.filterByMonth(Date.now());
           props.setShowCompleted(false);
@@ -40,6 +43,7 @@ const LeftNavigation = props => {
         This Month
       </SideNavLink>
       <SideNavLink
+        className='side-nav__item'
         onClick={() => {
           props.filterByCompleted();
           props.setShowCompleted(true);
