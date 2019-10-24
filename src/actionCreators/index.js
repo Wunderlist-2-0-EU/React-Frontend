@@ -1,20 +1,21 @@
-import axiosWithAuth from "../utils/axiosWithAuth";
-import axios from "axios";
-import * as types from "../actionTypes";
+import axiosWithAuth from '../utils/axiosWithAuth';
+import axios from 'axios';
+import * as types from '../actionTypes';
 
 // Register and Login Action Creators
 export const register = (credentials, history) => dispatch => {
   dispatch({ type: types.REQUEST_START });
   axios
-    .post("https://wunderlist-2.herokuapp.com/api/auth/register", credentials)
+    .post('https://wunderlist-2.herokuapp.com/api/auth/register', credentials)
     .then(res => {
       // we need to also store the userID in localStorage because addTodo requires a user_id)
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userID", res.data.userID);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userID', res.data.userID);
       dispatch({ type: types.REGISTER_SUCCESS, payload: res.data });
-      history.push("/todoapp");
+      history.push('/todoapp');
     })
     .catch(err => {
+      debugger;
       dispatch({ type: types.REGISTER_FAILURE, payload: err.response.data });
     });
 };
@@ -22,13 +23,13 @@ export const register = (credentials, history) => dispatch => {
 export const login = (credentials, history) => dispatch => {
   dispatch({ type: types.REQUEST_START });
   axios
-    .post("https://wunderlist-2.herokuapp.com/api/auth/login", credentials)
+    .post('https://wunderlist-2.herokuapp.com/api/auth/login', credentials)
     .then(res => {
       // we need to also store the userID in localStorage because addTodo requires a user_id)
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userID", res.data.userID);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userID', res.data.userID);
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data });
-      history.push("/todoapp");
+      history.push('/todoapp');
     })
     .catch(err => {
       dispatch({ type: types.LOGIN_FAILURE, payload: err.response.data });
@@ -45,7 +46,7 @@ export const getTaskList = () => dispatch => {
   dispatch({ type: types.REQUEST_START });
   // debugger;
   axiosWithAuth()
-    .get("api/todos")
+    .get('api/todos')
     .then(res => {
       // debugger;
       dispatch({ type: types.RESET_DISPLAYED_TASKS, payload: res.data });
@@ -80,7 +81,7 @@ export const getSingleTask = id => dispatch => {
 export const addTask = task => dispatch => {
   dispatch({ type: types.REQUEST_START });
   axiosWithAuth()
-    .post("api/todos", task)
+    .post('api/todos', task)
     .then(res => {
       dispatch({ type: types.ADD_TASK_SUCCESS, payload: res.data });
     })
@@ -91,13 +92,19 @@ export const addTask = task => dispatch => {
 
 export const EditTask = task => dispatch => {
   dispatch({ type: types.REQUEST_START });
-  if (task.completed === true && task.notes !== 'No Repeat' && task.notes !== null) {
-    dispatch(addTask({
-      setDate: task.setDate,
-      task: task.task,
-      title: task.title,
-      user_id: task.user_id,
-    }));
+  if (
+    task.completed === true &&
+    task.notes !== 'No Repeat' &&
+    task.notes !== null
+  ) {
+    dispatch(
+      addTask({
+        setDate: task.setDate,
+        task: task.task,
+        title: task.title,
+        user_id: task.user_id
+      })
+    );
   }
   axiosWithAuth()
     .put(`api/todos/${task.id}`, task)
@@ -128,8 +135,15 @@ export const filterByDate = date => dispatch => {
   dispatch({ type: types.FILTER_BY_DATE, payload: date });
 };
 
+export const filterByMonth = date => dispatch => {
+  dispatch({ type: types.FILTER_BY_MONTH, payload: date });
+};
+
+export const filterByCompleted = () => dispatch => {
+  dispatch({ type: types.FILTER_BY_COMPLETED });
+};
+
 export const filterBySearchTerm = searchTerm => dispatch => {
-  // debugger;
   dispatch({ type: types.FILTER_BY_SEARCH_TERM, payload: searchTerm });
 };
 

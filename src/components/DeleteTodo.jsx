@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   AlertDialog,
   AlertDialogBody,
@@ -7,8 +7,8 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   Button
-} from "@chakra-ui/core";
-import { SubtleButton2 } from "./CustomButtons";
+} from '@chakra-ui/core';
+import { SubtleButton2 } from './CustomButtons';
 
 function DeleteTodo(props) {
   const { onConfirm, onClose, isOpen } = props;
@@ -21,10 +21,6 @@ function DeleteTodo(props) {
 
   return (
     <>
-      {/* <Button variantColor="red" onClick={() => setIsOpen(true)}>
-        Delete
-      </Button> */}
-
       <AlertDialog
         isOpen={isOpen}
         leastDestructiveRef={cancelRef}
@@ -32,7 +28,7 @@ function DeleteTodo(props) {
       >
         <AlertDialogOverlay />
         <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+          <AlertDialogHeader fontSize='lg' fontWeight='bold'>
             Delete Todo
           </AlertDialogHeader>
 
@@ -44,9 +40,6 @@ function DeleteTodo(props) {
             <Button ref={cancelRef} onClick={onClose}>
               Cancel
             </Button>
-            {/* <Button variantColor="red" onClick={onClose} ml={3}>
-              Delete
-            </Button> */}
             <SubtleButton2 onClick={handleConfirm} ml={3}>
               Delete
             </SubtleButton2>

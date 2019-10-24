@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from 'react';
 import {
   FormControl,
   FormLabel,
@@ -6,36 +6,34 @@ import {
   Button,
   Select,
   Box,
-  Stack,
   Flex,
   FormErrorMessage,
   Checkbox,
   Text
-} from "@chakra-ui/core";
-import { withFormik, Field, Form } from "formik";
-import { connect } from "react-redux";
-import { FaCalendarAlt } from "react-icons/fa";
+} from '@chakra-ui/core';
+import { withFormik, Field, Form } from 'formik';
+import { connect } from 'react-redux';
+import { FaCalendarAlt } from 'react-icons/fa';
 
-import * as actionCreators from "../actionCreators";
-import * as yup from "yup";
+import * as actionCreators from '../actionCreators';
+import * as yup from 'yup';
 
 export function EditTodoForm(props) {
-  //   debugger;
   return (
     <Box
-      marginX="20px"
+      marginX='20px'
       py={3}
-      fontWeight="bold"
-      bg="white"
-      marginTop="30px"
-      padding="20px"
-      borderRadius="5px"
-      borderWidth="2px"
+      fontWeight='bold'
+      bg='white'
+      marginTop='30px'
+      padding='20px'
+      borderRadius='5px'
+      borderWidth='2px'
     >
       <Form>
-        <Text paddingY="20px">Edit Task</Text>
+        <Text paddingY='20px'>Edit Task</Text>
         <Field
-          name="task"
+          name='task'
           render={({ field, form }) => (
             <FormControl
               isInvalid={form.errors[field.name] && form.touched[field.name]}
@@ -43,39 +41,39 @@ export function EditTodoForm(props) {
               {/* <FormLabel htmlFor="task">First name</FormLabel> */}
               <Input
                 {...field}
-                id="task"
-                placeholder="Enter task"
-                focusBorderColor="cyan.100"
+                id='task'
+                placeholder='Enter task'
+                focusBorderColor='cyan.100'
               />
               <FormErrorMessage>{form.errors[field.name]}</FormErrorMessage>
             </FormControl>
           )}
         />
         <Field
-          name="setDate"
+          name='setDate'
           render={({ field, form }) => (
             <FormControl
               isInvalid={form.errors[field.name] && form.touched[field.name]}
             >
-              <Flex paddingY="20px">
-                <FormLabel htmlFor="set-date" marginTop="5px">
-                  Due{" "}
+              <Flex paddingY='20px'>
+                <FormLabel htmlFor='set-date' marginTop='5px'>
+                  Due{' '}
                 </FormLabel>
                 <Input
                   {...field}
-                  type="date"
-                  id="set-date"
-                  marginLeft="20px"
-                  focusBorderColor="cyan.100"
-                  placeholder="Enter due date"
-                  maxWidth="180px"
+                  type='date'
+                  id='set-date'
+                  marginLeft='20px'
+                  focusBorderColor='cyan.100'
+                  placeholder='Enter due date'
+                  maxWidth='180px'
                 />
                 <Box
                   as={FaCalendarAlt}
-                  size="24px"
-                  marginTop="8px"
-                  color="gray.500"
-                  marginLeft="20px"
+                  size='24px'
+                  marginTop='8px'
+                  color='gray.500'
+                  marginLeft='20px'
                 />
               </Flex>
               <FormErrorMessage>{form.errors[field.name]}</FormErrorMessage>
@@ -83,16 +81,16 @@ export function EditTodoForm(props) {
           )}
         />
         <Field
-          name="completed"
+          name='completed'
           render={({ field, form }) => (
             <FormControl
               isInvalid={form.errors[field.name] && form.touched[field.name]}
             >
               <Flex>
-                <FormLabel htmlFor="set-date">Completed?</FormLabel>
+                <FormLabel htmlFor='set-date'>Completed?</FormLabel>
                 <Checkbox
-                  variantColor="cyan"
-                  id="completed"
+                  variantColor='cyan'
+                  id='completed'
                   isChecked={field.value}
                   {...field}
                 />
@@ -102,37 +100,37 @@ export function EditTodoForm(props) {
           )}
         />
         <Field
-          name="notes"
+          name='notes'
           render={({ field, form }) => (
             <FormControl
               isInvalid={form.errors[field.name] && form.touched[field.name]}
             >
-              <Flex justify="space-between" align="center" paddingY="10px">
-                <FormLabel htmlFor="repeat">No Repeat</FormLabel>
+              <Flex justify='space-between' align='center' paddingY='10px'>
+                <FormLabel htmlFor='repeat'>No Repeat</FormLabel>
                 <Select
-                  focusBorderColor="cyan.100"
-                  id="repeat"
-                  maxWidth="150px"
-                  placeholder="No Repeat"
+                  focusBorderColor='cyan.100'
+                  id='repeat'
+                  maxWidth='150px'
+                  placeholder='No Repeat'
                   {...field}
                 >
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="monthly">Monthly</option>
+                  <option value='daily'>Daily</option>
+                  <option value='weekly'>Weekly</option>
+                  <option value='monthly'>Monthly</option>
                 </Select>
               </Flex>
               <FormErrorMessage>{form.errors[field.name]}</FormErrorMessage>
             </FormControl>
           )}
         />
-        <Flex marginY="30px">
-          <Button type="submit" variantColor="cyan" color="white">
+        <Flex marginY='30px'>
+          <Button type='submit' variantColor='cyan' color='white'>
             Save
           </Button>
           <Button
-            marginLeft="20px"
+            marginLeft='20px'
             onClick={() => {
-              props.history.push("/todoapp");
+              props.history.push('/todoapp');
             }}
           >
             Cancel
@@ -150,9 +148,9 @@ const EditTodoFormik = withFormik({
     const taskData = store.find(task => task.id === Number(id));
     if (!taskData) {
       return {
-        title: title || "",
-        task: task || "",
-        setDate: setDate || "",
+        title: title || '',
+        task: task || '',
+        setDate: setDate || '',
         completed: completed || false
       };
     }
@@ -166,14 +164,14 @@ const EditTodoFormik = withFormik({
   },
   enableReinitialize: true,
   validationSchema: yup.object().shape({
-    title: yup.string().required("Please enter a title"),
-    task: yup.string().required("Please enter your todo"),
-    setDate: yup.date().required("please set the due date"),
+    title: yup.string().required('Please enter a title'),
+    task: yup.string().required('Please enter your todo'),
+    setDate: yup.date().required('please set the due date'),
     completed: yup.bool()
   }),
   handleSubmit(values, { props }) {
     props.EditTask(values);
-    props.history.push("/todoapp");
+    props.history.push('/todoapp');
   }
 })(EditTodoForm);
 
