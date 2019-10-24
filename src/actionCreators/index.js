@@ -15,8 +15,11 @@ export const register = (credentials, history) => dispatch => {
       history.push('/todoapp');
     })
     .catch(err => {
-      debugger;
-      dispatch({ type: types.REGISTER_FAILURE, payload: err.response.data });
+      dispatch({
+        type: types.REGISTER_FAILURE,
+        payload: (err.response.data.message = 'Username already exits')
+      });
+      alert(err.response.data.message);
     });
 };
 
