@@ -44,16 +44,15 @@ export const logout = () => {
 // Tasks Action Creators
 export const getTaskList = () => dispatch => {
   dispatch({ type: types.REQUEST_START });
-  // debugger;
+  // ;
   axiosWithAuth()
     .get('api/todos')
     .then(res => {
-      // debugger;
       dispatch({ type: types.RESET_DISPLAYED_TASKS, payload: res.data });
       dispatch({ type: types.GET_ALL_TASKS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      // debugger;
+      // ;
       dispatch({
         type: types.GET_ALL_TASKS_FAILURE,
         payload: err.response
@@ -66,11 +65,11 @@ export const getSingleTask = id => dispatch => {
   axiosWithAuth()
     .get(`api/todos/${id}`)
     .then(res => {
-      // debugger;
+      // ;
       dispatch({ type: types.GET_SINGLE_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      // debugger;
+      // ;
       dispatch({
         type: types.GET_SINGLE_TASK_FAILURE,
         payload: err.response.data
@@ -90,7 +89,7 @@ export const addTask = task => dispatch => {
     });
 };
 
-export const EditTask = task => dispatch => {
+export const editTask = task => dispatch => {
   dispatch({ type: types.REQUEST_START });
   if (
     task.completed === true &&
@@ -109,11 +108,10 @@ export const EditTask = task => dispatch => {
   axiosWithAuth()
     .put(`api/todos/${task.id}`, task)
     .then(res => {
-      // debugger;
+      // ;
       dispatch({ type: types.UPDATE_TASK_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
       dispatch({ type: types.UPDATE_TASK_FAILURE, payload: err.response.data });
     });
 };
@@ -157,11 +155,9 @@ export const getUser = id => dispatch => {
   axiosWithAuth()
     .get(`api/users/${id}`)
     .then(res => {
-      debugger;
       dispatch({ type: types.GET_USER_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
       dispatch({ type: types.GET_USER_FAILURE, payload: err.response.data });
     });
 };
@@ -171,11 +167,9 @@ export const editUser = id => dispatch => {
   axiosWithAuth()
     .put(`api/users/${id}`)
     .then(res => {
-      debugger;
       dispatch({ type: types.UPDATE_USER_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
       dispatch({ type: types.UPDATE_USER_FAILURE, payload: err.response.data });
     });
 };
@@ -185,11 +179,9 @@ export const deleteUser = id => dispatch => {
   axiosWithAuth()
     .delete(`api/users/${id}`)
     .then(res => {
-      debugger;
       dispatch({ type: types.DELETE_USER_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      debugger;
       dispatch({ type: types.DELETE_USER_FAILURE, payload: err.response.data });
     });
 };

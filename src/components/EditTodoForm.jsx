@@ -169,7 +169,7 @@ const EditTodoFormik = withFormik({
     completed: yup.bool()
   }),
   handleSubmit(values, { props }) {
-    props.EditTask(values);
+    props.editTask(values);
     props.history.push('/todoapp');
   }
 })(EditTodoForm);

@@ -50,7 +50,7 @@ const TodoList = props => {
                   ...todo,
                   completed: !todo.completed
                 };
-                props.EditTask(newTodo);
+                props.editTask(newTodo);
               }}
             />
           ))}

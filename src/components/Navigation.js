@@ -17,7 +17,7 @@ export const Navigation = ({ searchTerm, setSearchTerm }) => {
         className='logout'
         onClick={() => {
           logout();
-          history.push('/login');
+          history.push('/');
         }}
       >
         Logout

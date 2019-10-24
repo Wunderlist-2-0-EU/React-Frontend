@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import Navigation from './Navigation';
 import PrivateRoute from './PrivateRoute';
 
-function Container(props) {
+function Container() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [showCompleted, setShowCompleted] = React.useState(false);
   return (
