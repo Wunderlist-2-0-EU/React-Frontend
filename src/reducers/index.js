@@ -1,9 +1,9 @@
-import * as types from "../actionTypes";
+import * as types from '../actionTypes';
 
 const initialOnboardingState = {
-  user_id: "",
-  message: "",
-  error: "",
+  user_id: '',
+  message: '',
+  error: '',
   isFetching: false,
   isLoggedIn: false
 };
@@ -14,7 +14,7 @@ export const onBoardingReducer = (state = initialOnboardingState, action) => {
       return {
         ...state,
         isFetching: true,
-        error: ""
+        error: ''
       };
     case types.REGISTER_SUCCESS:
       return {
@@ -53,14 +53,14 @@ export const onBoardingReducer = (state = initialOnboardingState, action) => {
 
 const initialTaskList = {
   taskList: [],
-  error: "",
+  error: '',
   isFetching: false
 };
 
 export const taskListReducer = (state = initialTaskList, action) => {
   switch (action.type) {
     case types.REQUEST_START:
-      // debugger;
+      // ;
       return {
         ...state,
         isFetching: true
@@ -126,9 +126,16 @@ export const taskListReducer = (state = initialTaskList, action) => {
 const getDateToCompare = date => {
   const formattedDate = new Date(date);
   const year = formattedDate.getFullYear();
-  const month = ("0" + (formattedDate.getMonth() + 1)).slice(-2);
-  const day = ("0" + formattedDate.getDate()).slice(-2);
+  const month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
+  const day = ('0' + formattedDate.getDate()).slice(-2);
   return `${year}${month}${day}`;
+};
+
+const getMonthToCompare = date => {
+  const formattedDate = new Date(date);
+  const year = formattedDate.getFullYear();
+  const month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
+  return `${year}${month}`;
 };
 
 const intitialDisplayedTasksState = {
@@ -148,14 +155,26 @@ export const displayTasksReducer = (
           );
         })
       };
+    case types.FILTER_BY_MONTH:
+      return {
+        state: state.state.filter(task => {
+          return (
+            getMonthToCompare(task.setDate) ===
+            getMonthToCompare(action.payload)
+          );
+        })
+      };
     case types.FILTER_BY_SEARCH_TERM:
       return {
         state: state.state.filter(task => {
           return task.task.toLowerCase().includes(action.payload.toLowerCase());
         })
       };
+    case types.FILTER_BY_COMPLETED:
+      return {
+        state: state.state.filter(task => task.completed)
+      };
     case types.RESET_DISPLAYED_TASKS:
-      // debugger;
       return {
         state: action.payload
       };
@@ -165,10 +184,10 @@ export const displayTasksReducer = (
         state: state.state.filter(task => task.id !== action.payload)
       };
     case types.ADD_TASK_SUCCESS:
-        return {
-          ...state,
-          state: state.state.concat(action.payload),
-        };
+      return {
+        ...state,
+        state: state.state.concat(action.payload)
+      };
     case types.UPDATE_TASK_SUCCESS:
       return {
         ...state,
@@ -177,7 +196,7 @@ export const displayTasksReducer = (
             return action.payload;
           }
           return task;
-        }),
+        })
       };
     default:
       return state;

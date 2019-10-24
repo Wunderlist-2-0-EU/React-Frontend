@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input, Stack } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actionCreators';
