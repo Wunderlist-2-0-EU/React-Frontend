@@ -36,6 +36,7 @@ const TodoList = props => {
     <>
     <div>
       {props.displayedTasks.state
+      .filter(task => Number(task.user_id) === Number(localStorage.getItem('userID')))
       .filter(task => props.searchTerm ? task.task.includes(props.searchTerm) : true)
       .filter(task => !task.completed)
       .map(todo => (
