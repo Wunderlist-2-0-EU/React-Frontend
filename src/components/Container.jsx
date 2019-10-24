@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddTodoForm from './AddTodoForm';
 import { Box, Flex, Heading } from '@chakra-ui/core';
 import LeftNavigation from './LeftNavigation';
@@ -9,8 +9,9 @@ import Navigation from './Navigation';
 import PrivateRoute from './PrivateRoute';
 
 function Container() {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [showCompleted, setShowCompleted] = React.useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCompleted, setShowCompleted] = useState(false);
+
   return (
     <Box>
       <Navigation setSearchTerm={setSearchTerm} searchTerm={searchTerm} />

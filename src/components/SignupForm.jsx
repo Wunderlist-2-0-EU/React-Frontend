@@ -67,7 +67,6 @@ const Signup = ({ errors, touched, isSubmitting }) => {
 
             <Button
               isLoading={isSubmitting}
-              // isFullWidth
               type='submit'
               size='lg'
               variantColor='cyan'

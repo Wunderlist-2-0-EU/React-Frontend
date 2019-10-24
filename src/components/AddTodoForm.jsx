@@ -40,7 +40,7 @@ function getTodayDate() {
 }
 
 const AddTodoFormik = withFormik({
-  mapPropsToValues({ title, task, setDate }) {
+  mapPropsToValues({ task, setDate }) {
     return {
       task: task || '',
       setDate: setDate || getTodayDate() //sets the default date
@@ -51,10 +51,8 @@ const AddTodoFormik = withFormik({
     setDate: yup.date().required('please set the due date')
   }),
   handleSubmit(values, { props, resetForm }) {
-    // Step 1: Get the user_id from localStorage
     const userID = localStorage.getItem('userID');
 
-    // Step 2: Create the todo object the way the endpoint requires
     const newTodo = {
       title: values.task,
       task: values.task,
@@ -62,10 +60,7 @@ const AddTodoFormik = withFormik({
       user_id: Number(userID)
     };
 
-    // Step 3: Call the action to add task, which is in props
     props.addTask(newTodo);
-
-    // Step 4: Reset the form
     resetForm();
   }
 })(AddTodoForm);
