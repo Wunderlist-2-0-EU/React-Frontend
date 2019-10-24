@@ -32,15 +32,6 @@ function Todo(props) {
           </Checkbox>
         </Stack>
         <Stack isInline spacing="20px" marginRight="20px">
-          {/* <Button
-            size="sm"
-            variant="outline"
-            variantColor="cyan"
-            onClick={() => onEdit()}
-          >
-            Edit
-          </Button> */}
-
           <IconButton
             onClick={() => onEdit()}
             variant="outline"
@@ -49,8 +40,6 @@ function Todo(props) {
             aria-label="Edit"
             icon={FaRegEdit}
           />
-          {/* <SubtleButton2 onClick={onOpen}>Delete</SubtleButton2> */}
-
           <DeleteTodo isOpen={isOpen} onClose={onClose} onConfirm={onDelete} />
           <IconButton
             onClick={onOpen}
