@@ -38,7 +38,6 @@ export function EditTodoForm(props) {
             <FormControl
               isInvalid={form.errors[field.name] && form.touched[field.name]}
             >
-              {/* <FormLabel htmlFor="task">First name</FormLabel> */}
               <Input
                 {...field}
                 id='task'
