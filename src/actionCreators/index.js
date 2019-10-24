@@ -8,7 +8,6 @@ export const register = (credentials, history) => dispatch => {
   axios
     .post('https://wunderlist-2.herokuapp.com/api/auth/register', credentials)
     .then(res => {
-      // we need to also store the userID in localStorage because addTodo requires a user_id)
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userID', res.data.userID);
       dispatch({ type: types.REGISTER_SUCCESS, payload: res.data });
