@@ -96,6 +96,6 @@ const FormikLogin = withFormik({
 })(Login);
 
 export default connect(
-  null,
+  state => state,
   { login }
 )(FormikLogin);

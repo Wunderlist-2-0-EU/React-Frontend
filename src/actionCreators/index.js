@@ -34,7 +34,11 @@ export const login = (credentials, history) => dispatch => {
       history.push('/todoapp');
     })
     .catch(err => {
-      dispatch({ type: types.LOGIN_FAILURE, payload: err.response.data });
+      dispatch({
+        type: types.LOGIN_FAILURE,
+        payload: err.response.data.message
+      });
+      alert(err.response.data.message);
     });
 };
 
